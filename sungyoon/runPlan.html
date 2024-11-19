@@ -3,9 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="runStyle.css">
   <title>Document</title>
 </head>
 <body>
-  
+  <!-- 헤더 -->
+  <header>
+    <div class="head_container">
+      <ul class="nav">
+        <li class="menu">러닝기록</li>
+        <li class="menu">타이머</li>
+        <li class="menu">챌린지</li>
+      </div>
+    </div>
+  </header>
+  <!-- 메인 -->
+  <main>
+    <div class="main_container">
+      <div class="main_wrap">
+        <div class="running_input">
+          <h3>오늘은 얼마나 달리셨나요?</h3>
+          <div class="input_container">
+            <div class="input_box">
+              <p>오늘 달린 거리</p>
+              <input type="text" id="input_distance">
+              <button type="submit">km</button>
+            </div>
+            <div class="input_box">
+              <p>달린 시간</p>
+              <input type="text" id="input_time">
+              <button type="submit">시간</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
