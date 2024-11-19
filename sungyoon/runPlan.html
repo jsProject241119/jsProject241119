@@ -27,15 +27,32 @@
             <div class="input_box">
               <p>오늘 달린 거리</p>
               <input type="text" id="input_distance">
-              <button type="submit">km</button>
             </div>
             <div class="input_box">
               <p>달린 시간</p>
               <input type="text" id="input_time">
-              <button type="submit">시간</button>
+              <button type="submit" class="tap_button" id="btn">기록</button>
             </div>
+            <ul id="run_list">
+              <li class="run_data">1</li>
+              <li class="run_data">2</li>
+              <li class="run_data">3</li>
+
+            </ul>
           </div>
         </div>
+        <!-- 퍼포먼스 출력 -->
+         <div class="today_info_container">
+          <h3>오늘의 활동 기록</h3>
+          <div>2024. 11. 10 일요일</div>
+          <div>킬로미터<span>10.5km</span></div>
+          <div>평균 페이스<span>9.8km/h</span></div>
+          <div>시간<span>1.05h</span></div>
+          <div>소모 칼로리<span>607kcal</span></div>
+         </div>
+         <div class="weekly_info_container">
+          <h3>주간 활동 기록</h3>
+         </div>
       </div>
     </div>
   </main>
