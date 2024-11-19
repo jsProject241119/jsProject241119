@@ -1,0 +1,69 @@
+
+header{
+    text-align: center;
+    margin-top: 100px;
+
+}
+#header-button button{
+    border-radius: 10px;
+    border:none;
+    
+}
+#total-box{
+    background: peachpuff;
+}
+#expense{
+    color: blue;
+    background: rgb(109, 142, 252);
+    
+}
+#income{
+    color: rgb(168, 18, 18);
+    background: rgb(216, 98, 98);
+}
+
+#input-container{
+    
+    border-radius: 30px;
+    padding: 20px;
+    background: peachpuff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#input-box{
+    margin: 10px;
+    
+}
+.content-box{
+    margin-top:10px;
+}
+#footer-button{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#header-button button{
+    font-size: 15px;
+    width: 105px;
+    
+    
+}
+.record-item{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    
+}
+
+#footer-button{
+    margin: 10px;
+}
+
+#record-history-container{
+
+    background: orange;
+    height: 500px;
+    
+}

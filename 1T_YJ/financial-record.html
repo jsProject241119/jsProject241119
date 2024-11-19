@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가계부</title>
+    <!-- linear icons -->
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        <!-- custom css -->
+        <link rel="stylesheet" href="main.css">
+
+        <!-- custom js -->
+        <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+        <h1>가계부<img src="https://cdn-icons-png.flaticon.com/512/5776/5776691.png" height="50px" width="50px" alt=""></h1>
+    </header>
+    
+    <section id="input-container">
+        
+        <div id="header-button">
+            <button id ="expense">지출</button>
+            <button id ="income">수입</button>
+        </div>
+        <div id="input-box">
+            <div class="price-box">
+                <label for="price">금액:</label>
+                <input id="price"></input>
+                <div class="total"></div>
+            </div>
+            <div class="content-box">
+                <label for="content">내용:</label>
+                <input id="content"></input>
+            </div>
+        </div>
+        <div id="footer-button">
+            <button id ="save" type="submit">저장하기</button>
+        </div>
+    </div>
+    
+</section>
+<section id="record-history-container">
+  <h2>전체내역</h2>
+  <ul id="record-list">
+    <!-- <li data-id="1" >
+        <div class="text">
+
+        </div>
+    </li>  -->
+  </ul>
+</section>
+
+    <script> 
+
+    </script>
+  </body>
+</html>
