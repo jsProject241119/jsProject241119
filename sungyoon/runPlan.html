@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- 헤더 -->
-  <header>
+  <!-- <header>
     <div class="head_container">
       <ul class="nav">
         <li class="menu">러닝기록</li>
@@ -17,12 +17,15 @@
         <li class="menu">챌린지</li>
       </div>
     </div>
-  </header>
+  </header> -->
   <!-- 메인 -->
   <main>
     <div class="main_container">
       <div class="main_wrap">
-        
+        <button id="add-btn">추가하기</button>
+        <ul id="runList">
+          <!-- <li class="added"></li> -->
+        </ul>
       </div>
     </div>
   </main>
@@ -38,8 +41,8 @@
       </div>
       <div class="input_elements">
         <p>날짜 및 시간</p>
-        <div><select id="year"></select>년 <select id="month"></select>월 <select id="day"></select>일 
-          <select id="noon"></select> <select id="hour"></select>시 <select id="minute"></select>분</div>
+        <input type="date" id="date">
+        <input type="time" id="time">
       </div>
       <div class="input_elements">
         <p>거리</p>
@@ -107,8 +110,10 @@
       </div>
       </div>
     </section>
-    <button class="submit-btn">저장</button>
-    <button class="close-btn">취소</button>
+    <div class="buttons">
+      <button class="submit-btn">저장</button>
+      <button class="close-btn">취소</button>
+    </div>
     </div>
   </div>
 </body>
