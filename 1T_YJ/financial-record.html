@@ -4,55 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>가계부</title>
-    <!-- linear icons -->
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-        <!-- custom css -->
-        <link rel="stylesheet" href="main.css">
-
-        <!-- custom js -->
-        <script src="app.js" defer></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="financial-record.css" />
+    <!-- custom js -->
+    <script src="financial-record.js" defer></script>
   </head>
   <body>
-    <header>
-        <h1>가계부<img src="https://cdn-icons-png.flaticon.com/512/5776/5776691.png" height="50px" width="50px" alt=""></h1>
-    </header>
-    
+    <section id="top">
+      <h1>가계부 <img
+        src="https://cdn-icons-png.flaticon.com/512/5776/5776691.png"
+        height="50px"
+        width="50px"
+        alt=""
+      /></h1>  
+    </section>
+
+    <section id ="record-total-container">
+        <div id="total-record"></div>
+    </section>
+
+
+    <section id="record-history-container">
+      <h2>전체내역</h2>
+      <div id="list-title">
+        <span>종류</span>
+        <span>가격</span>
+        <span>내용</span>
+      </div>
+      <ul id="record-list">
+      <!-- <li>
+        <div>지출 or 수입</div>
+        <div> 가격 </div>
+        <div> 내용 </div>
+
+      </li> -->
+      </ul>
+    </section>
+
     <section id="input-container">
-        
-        <div id="header-button">
-            <button id ="expense">지출</button>
-            <button id ="income">수입</button>
+      <div id="header-button">
+        <button id="expenseBtn">지출</button>
+        <button id="incomeBtn">수입</button>
+      </div>
+      <div id="input-box">
+        <div class ="calender-box">
+        <label for="calender">날짜: </label>    
+        <input type="date">
         </div>
-        <div id="input-box">
-            <div class="price-box">
-                <label for="price">금액:</label>
-                <input id="price"></input>
-                <div class="total"></div>
-            </div>
-            <div class="content-box">
-                <label for="content">내용:</label>
-                <input id="content"></input>
-            </div>
+        <div class="price-box">
+          <label for="price">금액: </label>
+          <input id="price" >
+          <div class="total"></div>
         </div>
-        <div id="footer-button">
-            <button id ="save" type="submit">저장하기</button>
+        <div class="content-box">
+          <label for="content">내용: </label>
+          <input id="content">
         </div>
-    </div>
-    
-</section>
-<section id="record-history-container">
-  <h2>전체내역</h2>
-  <ul id="record-list">
-    <!-- <li data-id="1" >
-        <div class="text">
-
-        </div>
-    </li>  -->
-  </ul>
-</section>
-
-    <script> 
-
-    </script>
+      </div>
+     
+      
+     <button id="submitBtn" type="submit">저장하기</button>
+      
+    </section>
   </body>
 </html>
