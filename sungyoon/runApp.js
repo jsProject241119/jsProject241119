@@ -36,8 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
       slot.textContent = currentNumber;
     });
   });
+  render();
  
 });
+//모달의 슬롯 번호 취합
 function getData(){
   const slots = document.querySelectorAll(".number-display");
   let tmp ='';
@@ -61,6 +63,14 @@ function getData(){
   runtimeSecond= parseInt(tmpS);
 }
 //렌더
+function renderBoardHandler(){
+  const $boardKillo = document.getElementById('board-killo');
+  const $boardHour = document.getElementById('board-hour');
+  const sumDistance = runData.reduce((sum,run)=>{
+    return sum+=run.Killo
+  },0);
+  $boardKillo.textContent=sumDistance+'km';
+}
 function render(){
   $runList.innerHTML='';
   runData.forEach(run=>{
@@ -69,6 +79,7 @@ function render(){
     $newLi.textContent=run.memo;
     $runList.append($newLi);
   })
+  renderBoardHandler();
 }
 function modalClose(){
   $modal.style.display='none';

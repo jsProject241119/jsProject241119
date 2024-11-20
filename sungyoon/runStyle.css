@@ -160,3 +160,8 @@ main button{
   height: 30px;
   border: 1px solid #000;
 }
+.performance{
+  width: 250px;
+  height: 250px;
+  border: 1px solid #000;
+}
