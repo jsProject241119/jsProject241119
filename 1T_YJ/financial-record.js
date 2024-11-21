@@ -13,10 +13,8 @@ $expenseBtn.addEventListener('click',()=>{
 recordType ='expense';
 $expenseBtn.classList.add('expense-active');
 $incomeBtn.classList.remove('income-active');
-
-
-
 })
+
 
 $incomeBtn.addEventListener('click',()=>{
     recordType = "income"
@@ -41,5 +39,12 @@ $submitBtn.addEventListener('click',()=>{
 
     $priceInput.value ='';
     $contentInput.value ='';
+
+})
+
+$contentInput.addEventListener('keydown',(e)=>{
+    if(e.key ==='Enter'){
+$submitBtn.click()
+    }
 
 })
