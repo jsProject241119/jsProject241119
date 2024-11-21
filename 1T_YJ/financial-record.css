@@ -23,35 +23,56 @@ body{
 }
 
 
-#record-history-container{
-    
-    background: #CDC1FF;
-    width: 1000px;
-    
-    
-}
-#record-history-container h2{
-    font-weight: 550;
-    color: #A594F9;
-    font-size: 25px;
-    padding: 20px;
+
+#full-record-list {
+    width: 100%;                
+    max-width: 1000px;          
+    margin: 0 auto;             
+    background-color: #f9f9f9;  
+    border-radius: 10px;      
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+          
 }
 
-#list-title{
+#list-title {
+    display: flex;              
+    justify-content: space-around; 
     font-size: 20px;
-    color: #A594F9;
-    font-weight: 550;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    font-weight: bold;          
+    background-color: #A594F9;  
+    color: white;               
+    padding: 10px;            
+    text-align: center;         
 }
-#record-list li{
-    display: flex;
-    justify-content: space-around;
-    padding: 25px;
-    color: #A594F9;
 
+#record-list {
+    list-style: none;           
+    width: 100%;
 }
+
+#record-list li {
+    display: flex;             
+    justify-content: space-around; 
+    align-items: center;        
+    padding: 10px;              
+    border-bottom: 1px solid #ddd; 
+}
+
+#record-list li:nth-child(even) {
+    background-color: #f3f3f3;  
+}
+
+#record-list li:last-child {
+    border-bottom: none;        
+}
+
+#record-list li div {
+    flex: 1;                    
+    text-align: center;         
+}
+
+
+
 .list-item{
    
     border-bottom: 1px solid #ccc;
@@ -81,6 +102,9 @@ body{
     flex-direction: column;
     
     
+}
+#input-box .calender-box{
+    margin-bottom: 10px;
 }
 #input-box input{
     border: none;

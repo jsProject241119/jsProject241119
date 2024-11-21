@@ -1,8 +1,9 @@
 const $expenseBtn = document.getElementById('expenseBtn')
 const $incomeBtn = document.getElementById('incomeBtn')
 const $submitBtn = document.getElementById('submitBtn')
-const $priceInput = document.getElementById('price')
-const $contentInput = document.getElementById('content')
+const $dateInput = document.getElementById('dateInput')
+const $priceInput = document.getElementById('priceInput')
+const $contentInput = document.getElementById('contentInput')
 const $recordsUl = document.getElementById('record-list')
 
 let recordType = "expense"
@@ -11,7 +12,9 @@ let recordType = "expense"
 $expenseBtn.addEventListener('click',()=>{
 recordType ='expense';
 $expenseBtn.classList.add('expense-active');
-$incomeBtn.classList.remove('income-active')
+$incomeBtn.classList.remove('income-active');
+
+
 
 })
 
@@ -22,11 +25,13 @@ $incomeBtn.addEventListener('click',()=>{
 })
 
 $submitBtn.addEventListener('click',()=>{
+    const dateInput = $dateInput.value
     const price = $priceInput.value
     const content = $contentInput.value
 
     const listItem = document.createElement('li');
     listItem.innerHTML =`
+    <div>${dateInput}</div>
     <div>${recordType === "expense" ? "지출": "수입"}</div>
     <div>${Number(price)}원</div>
     <div>${content}</div>

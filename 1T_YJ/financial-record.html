@@ -11,33 +11,34 @@
   </head>
   <body>
     <section id="top">
-      <h1>가계부 <img
-        src="https://cdn-icons-png.flaticon.com/512/5776/5776691.png"
-        height="50px"
-        width="50px"
-        alt=""
-      /></h1>  
+      <h1>
+        가계부
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/5776/5776691.png"
+          height="50px"
+          width="50px"
+          alt=""
+        />
+      </h1>
     </section>
 
-    <section id ="record-total-container">
-        <div id="total-record"></div>
+    <section id="record-total-container">
+      <div id="total-record"></div>
     </section>
 
-
-    <section id="record-history-container">
-      <h2>전체내역</h2>
+    <section id="full-record-list">
       <div id="list-title">
+        <span>날짜</span>
         <span>종류</span>
         <span>가격</span>
         <span>내용</span>
       </div>
       <ul id="record-list">
-      <!-- <li>
-        <div>지출 or 수입</div>
-        <div> 가격 </div>
-        <div> 내용 </div>
-
-      </li> -->
+        <!-- <li>
+                  <div>지출 or 수입</div>
+                  <div> 가격 </div>
+                  <div> 내용 </div>
+                </li> -->
       </ul>
     </section>
 
@@ -47,24 +48,21 @@
         <button id="incomeBtn">수입</button>
       </div>
       <div id="input-box">
-        <div class ="calender-box">
-        <label for="calender">날짜: </label>    
-        <input type="date">
+        <div class="calender-box">
+          <label for="calender">날짜: </label>
+          <input type="date" id="dateInput" />
         </div>
         <div class="price-box">
           <label for="price">금액: </label>
-          <input id="price" >
-          <div class="total"></div>
+          <input id="priceInput" />
         </div>
         <div class="content-box">
           <label for="content">내용: </label>
-          <input id="content">
+          <input id="contentInput" />
         </div>
       </div>
-     
-      
-     <button id="submitBtn" type="submit">저장하기</button>
-      
+
+      <button id="submitBtn" type="submit">저장하기</button>
     </section>
   </body>
 </html>
