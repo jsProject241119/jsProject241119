@@ -1,0 +1,40 @@
+body {
+    font-family: serif;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: auto;
+}
+
+h1 {
+  color: aquamarine;
+}
+
+.container {
+ width: 500px;
+ height: 700px;
+ background: wheat;
+}
+
+#wrapper {
+    margin: 10px;
+    border-radius: 10px;
+    padding: auto;
+}
+
+.yes {
+  color: blueviolet;
+  padding: 5px;
+}
+
+.reset {
+    color: orange;
+    padding: 5px;
+}
+
+.cansel {
+    color: red;
+    padding: 5px;
+}
+

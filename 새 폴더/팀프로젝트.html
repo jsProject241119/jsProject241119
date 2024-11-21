@@ -4,26 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>숫자 맞추기 게임 예제</title>
+
+    <!-- css 연결하기 -->
+    <!-- reset.css -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+     <!-- main.css -->
+     <link rel="stylesheet" href="css/main.css">
+
+     <!-- js 연결 -->
+      <script src="js/app.js" defer></script>
 </head>
-
 <body>
-    <div class="const">
-    <input type="text">
-    <div class="main">
-        <button id="click">확인</button>
-        <button id="reset">초기화</button>
+    <div class="container"></div>
+    <h1>숫자 맞추기 게임</h1>
+   <h2>1부터 45까지의 랜덤 숫자를 맞추어 보세요.</h2>
+   <p>기회는 5번 입니다.</p>
+     <br>
+   <div id="wrapper">
+    <button class="yes">확인</button>
+    <button class="reset">리셋</button>
+    <button class="cansel">취소</button>
+   </div>
+     <div class="resultPara">
+        <p>미리 예상 숫자: <span class="guesses"></span></p>
+        <p>남은 기회: <span class="lastResult">5</span></p>
+        <p class="guessResult"></p>
+     </div>
+     <div class="circle">
+         <div class="answerCircle"></div>
+         <div class="guessCircle"></div>
+        </div>
     </div>
-    <script>
-        const $wordInput = document.querySelector('wordInput');
-        const $timedisplay = document.querySelector('time');
-        const $scoredisplay = document.querySelector('score');
-        const messagedisplay = document.querySelector('message');
-
-        let words = ['apple', 'gimbap', 'boodle', 'rice', 'make a hidden'];
-
-    </script>
-
-
-
-</body>
+  <script src="app.js"></script>
+  </body> 
 </html>
