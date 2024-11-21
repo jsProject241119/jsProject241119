@@ -106,18 +106,25 @@ body{
   font-size: 20px;
   background: #f8f9fa
 }
+.input_elements button:hover{
+  background: lightblue;
+}
 .input_elements button{
   font-size: 10px;
   border: none;
   width: 50px; 
   opacity: 0.5;
   cursor: pointer;
+  background: none;
 }
 .run_time{
   display: flex;
 }
+.run_time button:hover{
+  background: lightblue;
+}
 .run_time button{
-  width: 30px;
+  width: 40px;
 }
 .buttons{
   display: flex;
@@ -191,10 +198,12 @@ main button{
 }
 .main_wrap #runList{
   width: 400px;
+  height: 300px;
   margin: 50px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-y: scroll;
   background-color: #ffffff;
   margin: 20px;
 }
