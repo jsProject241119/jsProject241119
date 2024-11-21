@@ -64,22 +64,80 @@ function getData(){
 }
 //렌더
 function renderBoardHandler(){
+  //거리합 표시
   const $boardKillo = document.getElementById('board-killo');
-  const $boardHour = document.getElementById('board-hour');
   const sumDistance = runData.reduce((sum,run)=>{
     return sum+=run.Killo
   },0);
   $boardKillo.textContent=sumDistance+'km';
+  //시간합 표시
+  const $boardHour = document.getElementById('board-hour');
+  let sumSecond = runData.reduce((sum,run)=>{
+    return sum+=run.second;
+  },0);
+  let sumMinute = runData.reduce((sum,run)=>{
+    return sum+=run.minute
+  },0);
+  let sumHour = runData.reduce((sum,run)=>{
+    return sum+=run.hour
+  },0);
+  let tmp = 0;
+  tmp = Math.floor(sumSecond/60);
+  sumSecond = sumSecond%60;
+  sumMinute = sumMinute+tmp;
+  tmp = Math.floor(sumMinute/60);
+  sumMinute = sumMinute%60;
+  sumHour = sumHour+tmp;
+  document.getElementById('board-hour').textContent = sumHour;
+  document.getElementById('board-minute').textContent = sumMinute;
+  document.getElementById('board-second').textContent = sumSecond;
+  //평균 페이스 계산
+  const averageSpeed = calculateAverageSpeed(sumDistance,sumHour,sumMinute,sumSecond);
+  const roundAverage = Math.round(averageSpeed*100)/100;
+  document.getElementById('board-phase').textContent = roundAverage;
+
 }
 function render(){
   $runList.innerHTML='';
   runData.forEach(run=>{
     $newLi = document.createElement('li');
     $newLi.classList.add('added');
-    $newLi.textContent=run.memo;
+    $newLi.innerHTML=`
+      <div class="info"
+        <span>${run.date}</span>
+        <span>${run.memo}</span>
+        <span>${run.Killo}km</span>
+      </div>
+      <div class="icon">수정</div>
+    `
     $runList.append($newLi);
   })
   renderBoardHandler();
+  getToday();
+}
+function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
+  let averageSpeed=0;
+  if(!distanceKm||!hours||!minutes||!seconds) {
+    console.log(distanceKm);
+    console.log(hours);
+    console.log(minutes);
+    console.log(seconds);
+    return 0;
+  }
+  const totalHours = hours + (minutes / 60) + (seconds / 3600);
+  
+  averageSpeed = distanceKm / totalHours;
+
+  return averageSpeed; // km/h
+}
+function getToday(){
+  const today = new Date();
+  const formatter = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  });
+  document.getElementById('today').textContent = formatter.format(today);
 }
 function modalClose(){
   $modal.style.display='none';
@@ -108,8 +166,16 @@ $submitBtn.addEventListener('click',()=>{
     minute : runtimeMinute,
     second : runtimeSecond
   }
+  let isTimeSet;
+  if(!newRun.runtimeHour||!newRun.runtimeMinute||!newRun.runtimeSecond){
+    isTimeSet=true;
+  }else isTimeSet=false;
+  
+  if(!newRun.date||!newRun.time||!newRun.Killo||!isTimeSet){
+    alert('날짜/시간/거리 는 필수 항목입니다.');
+    return;
+  }
   runData.push(newRun);
-  console.log(JSON.stringify(runData));
   render();
   modalClose();
 })

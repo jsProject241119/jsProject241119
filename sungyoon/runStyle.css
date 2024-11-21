@@ -1,26 +1,35 @@
 @import url(common.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 header{
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 10px;
-  width: 100%;
-  height: 70px;
-  background: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 1;
-  border-bottom: 1px solid #9f9f9f;
-  box-shadow: 0 2px 3px #dfdfdf;
+}
+ 
+.italic{
+  font-style: italic;
 }
 body{
   z-index: -1;
   background: #dfdfdf;
+  font-family: "Noto Sans KR",sans-serif;
 }
-.head_container .nav{
+.head_container{
+  width: 80%;
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: #151e3d;
+}
+.head_container h1{
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
 }
 .head_container .nav .menu{
   margin: 20px;
@@ -128,40 +137,100 @@ body{
   margin-left: 10px;
 }
 /* 모달끝 */
+/* ===========메인================== */
 main{
   display: flex;
   justify-content: center;
-  padding-top: 100px;
 }
 .main_container{
-  width: 70%;
-  height: 100vh;
+  width: 80%;
   background: rgba(255,255,255,0.9);
   display: flex;
   justify-content: center;
 }
 .main_wrap{
-  min-width: 70%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+.box{
+  width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin: 20px;
+  min-height: 50px;
+}
+.add-box{
+  position: relative;
+  height: 100px;
+  padding: 20px;
+}
+.add-box h2{
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+.add-box button{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #1a66cc;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 main button{
   height: 30px;
   cursor: pointer;
 }
 .main_wrap #runList{
-  border: 1px dashed #000;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin: 20px;
 }
 #runList .added{
   width: 95%;
   height: 30px;
-  border: 1px solid #000;
+  background: #63c5da;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  font-weight: 500;
+  display: flex;
+}
+.added .info span:nth-child(1){
+  max-width: 150px;
+  overflow: hidden;
+}
+.added .info{
+  flex: 6;
+  display: flex;
+  justify-content: space-between;
+}
+.added .icon{
+  flex: 1;
+  display: flex;
+  justify-content: center;  
 }
 .performance{
   width: 250px;
-  height: 250px;
-  border: 1px solid #000;
+  padding: 20px;
+}
+.performance span{
+  font-size: 40px;
+}
+.performance h2{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0;
 }
