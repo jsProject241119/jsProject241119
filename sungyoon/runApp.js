@@ -32,7 +32,8 @@ const $time = document.getElementById("time");
 const $addBtn = document.getElementById("add-btn");
 const slots = document.querySelectorAll(".number-display");
 const $periodBtns = document.querySelector(".period-btns");
-let filteredData = runData;
+let selectedPeriod ="today";
+let $runDataF=[];
 
 let runKillo = 0;
 let runtimeHour = 0;
@@ -83,22 +84,32 @@ function getData() {
 }
 //보드 렌더
 function renderBoardHandler() {
+  //선택된 기간 감지
+  if(selectedPeriod==="today"){
+    $runDataF = runData.filter(run=>run.date===getFormattedDate())
+  }else if(selectedPeriod==="week"){
+    $runDataF = runData.filter(run=>run.id==1);
+  }else if(selectedPeriod==="month"){
+    $runDataF = runData.filter(run=>run.date.split('-')[1]==new Date().getMonth()+1)
+    console.log(runData[0].date.split('-')[1]); 
+  }else{
+    alert('버그발생')
+  }
   //거리합 표시
-  if(false){const runtoday = runData.filter(run=>run.date===getFormattedDate())}
   const $boardKillo = document.getElementById("board-killo");
-  const sumDistance = runData.reduce((sum, run) => {
+  const sumDistance = $runDataF.reduce((sum, run) => {
     return (sum += run.Killo);
   }, 0);
   $boardKillo.textContent = sumDistance + "km";
   //시간합 표시
   const $boardHour = document.getElementById("board-hour");
-  let sumSecond = runData.reduce((sum, run) => {
+  let sumSecond = $runDataF.reduce((sum, run) => {
     return (sum += run.second);
   }, 0);
-  let sumMinute = runData.reduce((sum, run) => {
+  let sumMinute = $runDataF.reduce((sum, run) => {
     return (sum += run.minute);
   }, 0);
-  let sumHour = runData.reduce((sum, run) => {
+  let sumHour = $runDataF.reduce((sum, run) => {
     return (sum += run.hour);
   }, 0);
   let tmp = 0;
@@ -120,10 +131,6 @@ function renderBoardHandler() {
   );
   const roundAverage = Math.round(averageSpeed * 100) / 100;
   document.getElementById("board-phase").textContent = roundAverage;
-}
-//오늘만 렌더
-renderBoardToday(){
-
 }
 //렌더하기
 function render() {
@@ -157,6 +164,7 @@ function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
 
   return averageSpeed; // km/h
 }
+
 //오늘 날짜 한글로 가져오기
 function getToday() {
   const today = new Date();
@@ -247,10 +255,23 @@ $runList.addEventListener('click',e=>{
   runData.splice(0,runData.length,...runData.filter(run=>run.id!==dataId));
   render();
 });
-//기간 필터링 버튼 리스너
+// 기간 필터링 버튼 리스너
 $periodBtns.addEventListener('click',e=>{
   if(!e.target.matches('.period-btn'))return;
-  console.log(e.target);
-  if(e.target.matches('#today-btn'))
-    renderBoardToday();
+  if(e.target.matches('#today-btn')){
+    selectedPeriod = "today";
+    renderBoardHandler();
+  }
+  if(e.target.matches('#week-btn')){
+    selectedPeriod = "week";
+    renderBoardHandler();
+  }
+  if(e.target.matches('#month-btn')){
+    selectedPeriod = "month";
+    renderBoardHandler();
+  }
 })
+const today = new Date();
+const a = today.getDate();
+const b = setToday
+console.log(a);
