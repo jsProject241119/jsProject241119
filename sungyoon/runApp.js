@@ -1,5 +1,26 @@
 // 전역 변수
-const runData = [];
+const runData = [
+  {
+		"id":"1",
+		"memo":"아침 러닝",
+		"date":"2024-11-14",
+		"time":"09:10",
+		"Killo":9.8,
+		"hour":1,
+		"minute":10,
+		"second":23
+	},
+  {
+		"id":"2",
+		"memo":"목요일 저녁 러닝",
+		"date":"2024-11-21",
+		"time":"20:30",
+		"Killo":11.5,
+		"hour":1,
+		"minute":8,
+		"second":15
+	}
+];
 const $runList = document.getElementById("runList");
 const $submitBtn = document.querySelector(".submit-btn");
 const $closeBtn = document.querySelector(".close-btn");
@@ -10,6 +31,9 @@ const $date = document.getElementById("date");
 const $time = document.getElementById("time");
 const $addBtn = document.getElementById("add-btn");
 const slots = document.querySelectorAll(".number-display");
+const $periodBtns = document.querySelector(".period-btns");
+let filteredData = runData;
+
 let runKillo = 0;
 let runtimeHour = 0;
 let runtimeMinute = 0;
@@ -60,6 +84,7 @@ function getData() {
 //보드 렌더
 function renderBoardHandler() {
   //거리합 표시
+  if(false){const runtoday = runData.filter(run=>run.date===getFormattedDate())}
   const $boardKillo = document.getElementById("board-killo");
   const sumDistance = runData.reduce((sum, run) => {
     return (sum += run.Killo);
@@ -96,6 +121,10 @@ function renderBoardHandler() {
   const roundAverage = Math.round(averageSpeed * 100) / 100;
   document.getElementById("board-phase").textContent = roundAverage;
 }
+//오늘만 렌더
+renderBoardToday(){
+
+}
 //렌더하기
 function render() {
   $runList.innerHTML = "";
@@ -128,7 +157,7 @@ function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
 
   return averageSpeed; // km/h
 }
-//오늘 날짜 가져오기
+//오늘 날짜 한글로 가져오기
 function getToday() {
   const today = new Date();
   const formatter = new Intl.DateTimeFormat("ko-KR", {
@@ -137,6 +166,13 @@ function getToday() {
     day: "numeric",
   });
   document.getElementById("today").textContent = formatter.format(today);
+}
+//yyyy--mm--dd형식 오늘
+function getFormattedDate(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 //모달 닫기 기능
 function modalClose() {
@@ -195,6 +231,7 @@ $submitBtn.addEventListener("click", () => {
   }
   runData.push(newRun);
   render();
+  console.log(JSON.stringify(runData));
   modalClose();
 });
 //추가하기
@@ -210,3 +247,10 @@ $runList.addEventListener('click',e=>{
   runData.splice(0,runData.length,...runData.filter(run=>run.id!==dataId));
   render();
 });
+//기간 필터링 버튼 리스너
+$periodBtns.addEventListener('click',e=>{
+  if(!e.target.matches('.period-btn'))return;
+  console.log(e.target);
+  if(e.target.matches('#today-btn'))
+    renderBoardToday();
+})
