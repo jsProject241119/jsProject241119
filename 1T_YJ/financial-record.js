@@ -1,3 +1,31 @@
+//====== 전역 변수 영역 =======//
+// 서버와 통신할 데이터
+let records =[
+    {
+        id:'1',
+        date:'',
+        recordType:'',
+        price:'',
+        content:''
+    },
+    {
+        id:'1',
+        date:'',
+        recordType:'',
+        price:'',
+        content:''
+    },
+    {
+        id:'1',
+        date:'',
+        recordType:'',
+        price:'',
+        content:''
+    },
+
+]
+
+//======= DOM 가져오기 영역 ========//
 const $expenseBtn = document.getElementById('expenseBtn')
 const $incomeBtn = document.getElementById('incomeBtn')
 const $submitBtn = document.getElementById('submitBtn')
@@ -8,7 +36,24 @@ const $recordsUl = document.getElementById('record-list')
 
 let recordType = "expense"
 
+//======= 함수 정의 영역 ========//
 
+function renderRecords(){
+    // 기존 내용 전부 삭제하기
+    $recordsUl. innerHTML= ``;
+    records.forEach(record =>{
+        // li태그를 생성
+        const $li =document.createElement('li');
+        // 
+
+    })
+}
+
+
+
+
+
+//======== 이벤트 핸들러 ========//
 $expenseBtn.addEventListener('click',()=>{
 recordType ='expense';
 $expenseBtn.classList.add('expense-active');
