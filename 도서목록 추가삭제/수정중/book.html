@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- <link rel="stylesheet" href="book.css"> -->
+    <script src="book.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="header-container">
+        <h1>Book Log</h1>
+
+        <form>
+          <ul id="bookInfo">
+            <li>
+              <label for="title">제목 : </label>
+              <input
+                type="text"
+                id="title"
+                placeholder="책 제목을 입력하세요"
+              />
+            </li>
+            <li>
+              <label for="author">저자 :</label>
+              <input
+                type="text"
+                id="author"
+                placeholder="저자명을 입력하세요"
+              />
+            </li>
+          </ul>
+         
+          <figure class="img-container">
+            <h2>※ 이달의 추천도서</h2>
+            <img src="https://store.kyobobook.co.kr/_next/image?url=https%3A%2F%2Fcontents.kyobobook.co.kr%2Fsih%2Ffit-in%2F144x222%2Fpdt%2F9788936434120.jpg&w=144&q=80" alt="베스트셀러">
+          
+          </figure>
+
+          <div class="footer-container">
+            <button type="reset">취소하기</button>
+            <button id="save">저장하기</button>
+          </div>
+        </form>
+
+        <ul id="bookList"></ul>
+        <!-- li들 들어올 자리 -->
+      </section>
+    </div>
+  </body>
+</html>
