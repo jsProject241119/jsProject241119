@@ -5,15 +5,13 @@ const $save = document.querySelector("#save");
 const $bookList = document.querySelector("#bookList");
 
 $save.addEventListener("click", function (e) {
-  e.preventDefault();
+  e.preventDefault();  //페이지 리로드 막기
 
   const item = document.createElement("li");
   item.innerHTML = `
   
   ${$title.value} - ${$author.value}
   <span class="delButton"> 삭제 </button>
-  
-  
   
   `;
   $bookList.appendChild(item);
@@ -29,3 +27,4 @@ $save.addEventListener("click", function (e) {
     })
   }
 });
+
