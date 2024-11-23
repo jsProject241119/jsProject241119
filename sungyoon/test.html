@@ -1,107 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const fetchData = async () => {
+        const url =
+          "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
+        const queryParams = new URLSearchParams({
+          serviceKey: "yjh3cmb465ofZYMOXk0108zs2SSCJSRp5H57RuWh0t7HLxF8UmLeBkATet3G9ogT7EzFtKJ4DvzGKFVw98TaGw==", // Service Key
+          pageNo: "1",
+          numOfRows: "1000",
+          dataType: "JSON",
+          base_date: "20241123",
+          base_time: "1054",
+          nx: "60",
+          ny: "127",
+        }).toString();
 
-.slot-machine {
-    display: flex;
-    gap: 10px;
-}
+        try {
+          const response = await fetch(`${url}?${queryParams}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          console.log("응답 데이터:", data);
+        } catch (error) {
+          console.error("에러 발생:", error);
+        }
+      };
 
-.slot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.number-display {
-    font-size: 2rem;
-    text-align: center;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border: 2px solid #ccc;
-    background-color: #fff;
-    margin: 5px 0;
-    border-radius: 5px;
-}
-
-button {
-    font-size: 1rem;
-    padding: 5px 10px;
-    cursor: pointer;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-  </style>
-</head>
-<body>
-  <div class="slot-machine">
-    <div class="slot">
-        <button class="btn-up">▲</button>
-        <div class="number-display" id="slot1">0</div>
-        <button class="btn-down">▼</button>
-    </div>
-    <div class="slot">
-        <button class="btn-up">▲</button>
-        <div class="number-display" id="slot2">0</div>
-        <button class="btn-down">▼</button>
-    </div>
-    <div class="slot">
-        <button class="btn-up">▲</button>
-        <div class="number-display" id="slot3">0</div>
-        <button class="btn-down">▼</button>
-    </div>
-</div>
-<button id="submit">입력 완료</button>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slots = document.querySelectorAll('.number-display');
-    const submitButton = document.getElementById('submit');
-
-    slots.forEach(slot => {
-        const upButton = slot.previousElementSibling; // ▲ 버튼
-        const downButton = slot.nextElementSibling;   // ▼ 버튼
-
-        upButton.addEventListener('click', () => {
-            let currentNumber = parseInt(slot.textContent);
-            currentNumber = (currentNumber + 1) % 10; // 0~9 반복
-            slot.textContent = currentNumber;
-        });
-
-        downButton.addEventListener('click', () => {
-            let currentNumber = parseInt(slot.textContent);
-            currentNumber = (currentNumber - 1 + 10) % 10; // 0~9 반복
-            slot.textContent = currentNumber;
-        });
-    });
-
-    submitButton.addEventListener('click', () => {
-        const selectedNumbers = Array.from(slots).map(slot => slot.textContent);
-        alert(`선택된 숫자: ${selectedNumbers.join('')}`);
-        // 필요하다면 서버로 전송하거나 다른 작업 수행
-    });
-});
-
-</script>
-</body>
+      fetchData();
+    </script>
+  </body>
 </html>

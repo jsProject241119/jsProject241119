@@ -8,7 +8,8 @@ const runData = [
 		"Killo":9.8,
 		"hour":1,
 		"minute":10,
-		"second":23
+		"second":23,
+		"pace":8
 	},
   {
 		"id":"2",
@@ -18,7 +19,8 @@ const runData = [
 		"Killo":11.5,
 		"hour":1,
 		"minute":8,
-		"second":15
+		"second":15,
+		"pace":9
 	}
 ];
 const $runList = document.getElementById("runList");
@@ -34,12 +36,24 @@ const slots = document.querySelectorAll(".number-display");
 const $periodBtns = document.querySelector(".period-btns");
 let selectedPeriod ="today";
 let $runDataF=[];
-
+let myChart;
 let runKillo = 0;
 let runtimeHour = 0;
 let runtimeMinute = 0;
 let runtimeSecond = 0;
 
+//해당 일자가 속한 주 계산
+function getTargetWeek(targetDay){
+  const today = new Date(targetDay);
+  const weekStart = new Date(today);
+  weekStart.setDate(today.getDate() - today.getDay());
+  const weekEnd = new Date(weekStart);
+  weekEnd.setDate(weekStart.getDate() + 6);
+  return {
+    getWeekStart : ()=>new Date(weekStart),
+    getWeekEnd : ()=>new Date(weekEnd)
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
   slots.forEach((slot) => {
     const upButton = slot.previousElementSibling;
@@ -88,10 +102,12 @@ function renderBoardHandler() {
   if(selectedPeriod==="today"){
     $runDataF = runData.filter(run=>run.date===getFormattedDate())
   }else if(selectedPeriod==="week"){
-    $runDataF = runData.filter(run=>run.id==1);
+    const thisWeek = getTargetWeek(new Date());
+    const weekStart=getFormattedDate(thisWeek.getWeekStart());
+    const weekEnd=getFormattedDate(thisWeek.getWeekEnd());
+    $runDataF = runData.filter(run=>run.date>=weekStart&&run.date<=weekEnd);
   }else if(selectedPeriod==="month"){
     $runDataF = runData.filter(run=>run.date.split('-')[1]==new Date().getMonth()+1)
-    console.log(runData[0].date.split('-')[1]); 
   }else{
     alert('버그발생')
   }
@@ -132,7 +148,7 @@ function renderBoardHandler() {
   const roundAverage = Math.round(averageSpeed * 100) / 100;
   document.getElementById("board-phase").textContent = roundAverage;
 }
-//렌더하기
+//==========렌더하기==============
 function render() {
   $runList.innerHTML = "";
   runData.forEach((run) => {
@@ -150,6 +166,7 @@ function render() {
     $runList.append($newLi);
   });
   renderBoardHandler();
+  renderChart()
   getToday();
 }
 //평균 시속 구하기
@@ -175,12 +192,18 @@ function getToday() {
   });
   document.getElementById("today").textContent = formatter.format(today);
 }
-//yyyy--mm--dd형식 오늘
+//yyyy--mm--dd형식 변환기
 function getFormattedDate(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
+}
+//mm/dd 형식 변환기
+function monthAndDay(date = new Date()){
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${month}/${day}`;
 }
 //모달 닫기 기능
 function modalClose() {
@@ -218,6 +241,13 @@ $closeBtn.addEventListener("click", () => {
 //모달 제출
 $submitBtn.addEventListener("click", () => {
   getData();
+  const averageSpeed = calculateAverageSpeed(
+    runKillo,
+    runtimeHour,
+    runtimeMinute,
+    runtimeSecond
+  );
+  const roundAverage = Math.round(averageSpeed * 100) / 100;
   const newRun = {
     id: String(Math.random()),
     memo: $memo.value,
@@ -227,6 +257,7 @@ $submitBtn.addEventListener("click", () => {
     hour: runtimeHour,
     minute: runtimeMinute,
     second: runtimeSecond,
+    phase: roundAverage
   };
   //필수요건 검증
   let isTimeSet;
@@ -271,7 +302,66 @@ $periodBtns.addEventListener('click',e=>{
     renderBoardHandler();
   }
 })
-const today = new Date();
-const a = today.getDate();
-const b = setToday
-console.log(a);
+function renderChart(){
+  if(myChart) myChart.destroy();
+  const thisWeek = getTargetWeek(new Date());
+  const weekStart = thisWeek.getWeekStart();
+  const sun = monthAndDay(weekStart);
+  const fullSun = getFormattedDate(weekStart);
+  const mon = monthAndDay(new Date(weekStart.setDate(weekStart.getDate()+1)));
+  const fullMon = getFormattedDate(weekStart);
+  const tue = monthAndDay(new Date(weekStart.setDate(weekStart.getDate()+1)));
+  const fullTue = getFormattedDate(weekStart);
+  const wed = monthAndDay(new Date(weekStart.setDate(weekStart.getDate()+1)));
+  const fullWed = getFormattedDate(weekStart);
+  const thu = monthAndDay(new Date(weekStart.setDate(weekStart.getDate()+1)));
+  const fullThu = getFormattedDate(weekStart);
+  const fri = monthAndDay(new Date(weekStart.setDate(weekStart.getDate()+1)));
+  const fullFri = getFormattedDate(weekStart);
+  const sat = monthAndDay(new Date(weekStart.setDate(weekStart.getDate()+1)));
+  const fullSat = getFormattedDate(weekStart);
+  const sunRun = runData.filter(data=>data.date==fullSun).reduce((sum,data)=>sum+=data.Killo,0)
+  const monRun = runData.filter(data=>data.date==fullMon).reduce((sum,data)=>sum+=data.Killo,0)
+  const tueRun = runData.filter(data=>data.date==fullTue).reduce((sum,data)=>sum+=data.Killo,0)
+  const wedRun = runData.filter(data=>data.date==fullWed).reduce((sum,data)=>sum+=data.Killo,0)
+  const thuRun = runData.filter(data=>data.date==fullThu).reduce((sum,data)=>sum+=data.Killo,0)
+  const friRun = runData.filter(data=>data.date==fullFri).reduce((sum,data)=>sum+=data.Killo,0)
+  const satRun = runData.filter(data=>data.date==fullSat).reduce((sum,data)=>sum+=data.Killo,0)
+  const sunPace = runData.filter(data=>data.date==fullSun).reduce((sum, num, _, array) => sum + num / array.length,0)
+  console.log(sunPace);
+const ctx = document.getElementById('myChart').getContext('2d');
+  myChart = new Chart(ctx, {
+    type: 'line', // 차트 종류 (bar, line, pie 등)
+    data: {
+      labels: [sun, mon, wed, tue, thu, fri, sat], // 라벨
+      datasets: [{
+        label: 'run km',
+        data: [sunRun, monRun, tueRun, wedRun, thuRun, friRun, satRun], // 데이터 값
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
