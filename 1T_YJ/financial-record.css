@@ -1,10 +1,19 @@
+
+
 @import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css");
 body{
-    background: #E5D9F2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+#full-container{
+    max-width: 800px; /* 중앙 콘텐츠 최대 너비 */
+  margin: 20px auto; /*상하, 좌우 여백*/
+  padding: 0 20px; /* 양쪽 추가 패딩 */
+  gap: 20px;
+  background: #E5D9F2;
+
 }
 
 #top{
@@ -16,17 +25,37 @@ body{
 
 }
 #record-total-container{
-    
+    width: 500px;
     background: #CDC1FF;
-
     margin-bottom: 100px;
+    border-radius: 20px;
+    padding: 20px;
+    color:black;
 }
-
+#total-record{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 550;
+}
+#each-total-record{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#record-total-container #expense-total-record{
+    margin-right: 20px;
+    color: #da1414be;
+}
+#record-total-container #income-total-record{
+    color: #0052e986;;
+}
 
 
 #full-record-list {
     width: 100%;                
-    max-width: 1000px;          
+    max-width: 1000px;
     margin: 0 auto;             
     background-color: #f9f9f9;  
     border-radius: 10px;      
@@ -42,7 +71,8 @@ body{
     background-color: #A594F9;  
     color: white;               
     padding: 10px;            
-    text-align: center;         
+    text-align: center; 
+          
 }
 
 #record-list {
@@ -50,10 +80,9 @@ body{
     width: 100%;
 }
 
-#record-list li {
-    display: flex;             
-    justify-content: space-around; 
-    align-items: center;        
+.record-list-item {
+    display: flex;
+    justify-content: space-around;
     padding: 10px;              
     border-bottom: 1px solid #ddd; 
 }
@@ -71,22 +100,17 @@ body{
     text-align: center;         
 }
 
-
-
-.list-item{
-   
-    border-bottom: 1px solid #ccc;
+#add-container{
+    margin-top: 20px;
+    text-align: center;
 }
-
-.show{
-    display: block;
-    
-}
-.cover{
-    display: none;
+#add-button{
+    width: 180px;
+    height: 50px;
 }
 #input-container{
-    margin-top: 100px;
+    opacity: 0;
+    margin-top:30px;
     border-radius: 30px;
     padding: 20px;
     background: #CDC1FF;
@@ -94,6 +118,9 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+#input-container.show{
+    opacity: 1;;
 }
 #input-box{
     margin: 20px;
@@ -140,4 +167,13 @@ button{
     font-size: 15px;
 
 }
-
+.btn-active{
+    background: white;
+    color: #A594F9;
+}
+#closeBtn{
+    margin-top: 10px;
+    width: 100px;
+    height:35px;
+    font-size: 15px;
+}
