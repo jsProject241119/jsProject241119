@@ -4,9 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="1T_HW.js" defer ></script>
+   <link rel="stylesheet" href="bookStyle.css">
+  <script src="bookApp.js" defer ></script>
+  
 </head>
 <body>
-  
+  <!-- 헤더 -->
+  <header>
+    <div class="container">
+      <h1>Book Log</h1>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="container">
+    <!-- 입력 섹션 -->
+    <section class="input-section">
+      <form class="book-form">
+        <!-- 책 제목 입력 -->
+        <label for="book-title">책 제목:</label>
+        <input
+          type="text"
+          id="book-title"
+          placeholder="책 제목을 입력하세요"
+          required
+        />
+
+        <!-- 저자 입력 -->
+        <label for="book-author">저자:</label>
+        <input
+          type="text"
+          id="book-author"
+          placeholder="저자명을 입력하세요"
+          required
+        />
+
+        <!-- 독서 기간 -->
+        <label for="reading-period">독서 기간:</label>
+        <div id="reading-period">
+          <input type="date" id="start-date" required />
+          <input type="date" id="end-date" required />
+        </div>
+
+        <!-- 한줄 감상평 -->
+        <label for="book-review">한줄 감상평:</label>
+        <textarea
+          id="book-review"
+          placeholder="감상평을 입력하세요"
+          rows="3"
+          required
+        ></textarea>
+
+        <!-- 버튼 -->
+        <div class="button-group">
+          <button type="reset" id="cancel-btn">취소하기</button>
+          <button type="submit" id="save-btn">저장하기</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 저장된 책 정보 섹션 -->
+    <section class="output-section">
+      <h2>Book Log List</h2>
+      <ul class="book-list" id="book-list">
+        <!-- 저장된 책 정보가 여기에 표시됩니다 -->
+      </ul>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="container">
+      <p>--</p>
+    </div>
+  </footer>
 </body>
 </html>
