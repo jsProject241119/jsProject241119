@@ -9,7 +9,7 @@ const runData = [
 		"hour":1,
 		"minute":10,
 		"second":23,
-		"pace":8
+		"pace":8.35
 	},
   {
 		"id":"2",
@@ -20,9 +20,55 @@ const runData = [
 		"hour":1,
 		"minute":8,
 		"second":15,
-		"pace":9
-	}
+		"pace":10.1
+	},
+  {
+		"id":"3",
+		"memo":"",
+		"date":"2024-11-25",
+		"time":"20:30",
+		"Killo":11.5,
+		"hour":1,
+		"minute":8,
+		"second":15,
+		"pace":10.1
+	},
+  {
+		"id":"4",
+		"memo":"",
+		"date":"2024-11-26",
+		"time":"20:30",
+		"Killo":5,
+		"hour":0,
+		"minute":40,
+		"second":15,
+		"pace":10.1
+	},
+  {
+		"id":"5",
+		"memo":"",
+		"date":"2024-11-27",
+		"time":"20:30",
+		"Killo":8,
+		"hour":0,
+		"minute":50,
+		"second":55,
+		"pace":10.1
+	},
+  {
+		"id":"6",
+		"memo":"",
+		"date":"2024-11-24",
+		"time":"20:30",
+		"Killo":6,
+		"hour":0,
+		"minute":50,
+		"second":23,
+		"pace":10.1
+	},
 ];
+const test1 = calculateAverageSpeed(11.5,1,8,15);
+// console.log(test1);
 const $runList = document.getElementById("runList");
 const $submitBtn = document.querySelector(".submit-btn");
 const $closeBtn = document.querySelector(".close-btn");
@@ -161,13 +207,18 @@ function render() {
         <span>${run.memo}</span>
         <span>${run.Killo}km</span>
       </div>
-      <div class="icon"><span class="lnr lnr-cross"></span></div>
+      <span class="lnr lnr-redo"></span>
+      <span class="lnr lnr-cross"></span>
+      </div>
     `;
     $runList.append($newLi);
   });
   renderBoardHandler();
   renderChart()
   getToday();
+  iconHover();
+  redoOpen();
+
 }
 //평균 시속 구하기
 function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
@@ -257,7 +308,7 @@ $submitBtn.addEventListener("click", () => {
     hour: runtimeHour,
     minute: runtimeMinute,
     second: runtimeSecond,
-    phase: roundAverage
+    pace: roundAverage
   };
   //필수요건 검증
   let isTimeSet;
@@ -302,6 +353,39 @@ $periodBtns.addEventListener('click',e=>{
     renderBoardHandler();
   }
 })
+//공배열 검증 후 평균내고 페이스를 소수점 2자리까지 출력
+function ArrayToAverage(arr){
+  if(arr.length===0) return 0;
+  const sumDis = arr.reduce((sum,data)=>sum+=data.Killo,0);
+  const sumHour = arr.reduce((sum,data)=>sum+=data.hour,0);
+  const sumMinute = arr.reduce((sum,data)=>sum+=data.minute,0);
+  const sumSecond = arr.reduce((sum,data)=>sum+=data.second,0);
+  const avrPace = calculateAverageSpeed(sumDis,sumHour,sumMinute,sumSecond);
+  return Math.round(avrPace*100)/100;
+
+}
+//아이콘 호버
+function iconHover(){
+const $lnr = document.querySelectorAll('.lnr');
+$lnr.forEach(lnr=>{
+  lnr.addEventListener('mouseover',e=>{
+    lnr.style.color='lightblue';
+  })
+})
+$lnr.forEach(lnr=>{
+  lnr.addEventListener('mouseout',e=>{
+    lnr.style.color='black';
+  })
+})
+}
+//수정 이벤트 리스너
+function redoOpen(){
+  document.querySelectorAll('.lnr-redo').forEach(redo=>{
+    redo.addEventListener('click',e=>{
+      modalOpen();
+    })
+  })
+}
 function renderChart(){
   if(myChart) myChart.destroy();
   const thisWeek = getTargetWeek(new Date());
@@ -327,14 +411,20 @@ function renderChart(){
   const thuRun = runData.filter(data=>data.date==fullThu).reduce((sum,data)=>sum+=data.Killo,0)
   const friRun = runData.filter(data=>data.date==fullFri).reduce((sum,data)=>sum+=data.Killo,0)
   const satRun = runData.filter(data=>data.date==fullSat).reduce((sum,data)=>sum+=data.Killo,0)
-  const sunPace = runData.filter(data=>data.date==fullSun).reduce((sum, num, _, array) => sum + num / array.length,0)
-  console.log(sunPace);
+  const sunPace = ArrayToAverage(runData.filter(data=>data.date==fullSun));
+  const monPace = ArrayToAverage(runData.filter(data=>data.date==fullMon));
+  const tuePace = ArrayToAverage(runData.filter(data=>data.date==fullTue));
+  const wedPace = ArrayToAverage(runData.filter(data=>data.date==fullWed));
+  const thuPace = ArrayToAverage(runData.filter(data=>data.date==fullThu));
+  const friPace = ArrayToAverage(runData.filter(data=>data.date==fullFri));
+  const satPace = ArrayToAverage(runData.filter(data=>data.date==fullSat));
 const ctx = document.getElementById('myChart').getContext('2d');
   myChart = new Chart(ctx, {
-    type: 'line', // 차트 종류 (bar, line, pie 등)
+    type: 'bar', // 차트 종류 (bar, line, pie 등)
     data: {
-      labels: [sun, mon, wed, tue, thu, fri, sat], // 라벨
-      datasets: [{
+      labels: [sun, mon, tue, thu, fri, sat], // 라벨
+      datasets: [
+        {
         label: 'run km',
         data: [sunRun, monRun, tueRun, wedRun, thuRun, friRun, satRun], // 데이터 값
         backgroundColor: [
@@ -354,10 +444,38 @@ const ctx = document.getElementById('myChart').getContext('2d');
           'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
-      }]
+      },
+      {
+        label: 'run pace',
+        data: [sunPace, monPace, tuePace, wedPace, thuPace, friPace, satPace], // 데이터 값
+        type: 'line',
+        borderWidth: 2,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor:[
+          
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        ]
+      
+      },
+    ],
     },
     options: {
       scales: {
+        x: {
+          beginAtZero: true
+        },
         y: {
           beginAtZero: true
         }

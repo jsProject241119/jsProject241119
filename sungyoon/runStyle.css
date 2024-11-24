@@ -225,11 +225,15 @@ main button{
   flex: 6;
   display: flex;
   justify-content: space-between;
+  margin-right: 10px;
+}
+.added .lnr{
+  cursor: pointer;
 }
 .added .icon{
   flex: 1;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
 }
 .board-wrap .period-btns{
   margin: 10px auto;
