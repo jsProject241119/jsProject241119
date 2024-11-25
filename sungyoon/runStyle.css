@@ -14,7 +14,7 @@ body{
   font-family: "Noto Sans KR",sans-serif;
 }
 .head_container{
-  width: 80%;
+  width: 60%;
   height: 100px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -25,11 +25,24 @@ body{
   justify-content: center;
   align-items: center;
   background: #151e3d;
+  position: relative;
+
 }
 .head_container h1{
   font-size: 40px;
   font-weight: 700;
   color: white;
+}
+.head_container img{
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+.fa-home{
+  position: absolute;
+  left: 50px;
+  color: white;
+  font-size: 30px;
 }
 .head_container .nav .menu{
   margin: 20px;
@@ -150,7 +163,7 @@ main{
   justify-content: center;
 }
 .main_container{
-  width: 80%;
+  width: 60%;
   background: rgba(255,255,255,0.9);
   display: flex;
   justify-content: center;
@@ -163,7 +176,7 @@ main{
 .box{
   width: 400px;
   margin: 50px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1 );
   border-radius: 8px;
   overflow: hidden;
   background-color: #ffffff;
@@ -253,6 +266,7 @@ main button{
 }
 .performance{
   width: 250px;
+  height: 383px;
   padding: 20px;
 }
 .performance span{
@@ -264,8 +278,8 @@ main button{
   margin: 10px 0;
 }
 .chart{
-  width: 500px;
-  height: 300px;
+  width: 700px;
+  height: 500px;
   font-weight: 500;
 }
 #chart{
