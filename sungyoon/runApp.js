@@ -422,7 +422,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
   myChart = new Chart(ctx, {
     type: 'bar', // 차트 종류 (bar, line, pie 등)
     data: {
-      labels: [sun, mon, tue, thu, fri, sat], // 라벨
+      labels: [sun, mon, tue, wed, thu, fri, sat], // 라벨
       datasets: [
         {
         label: 'run km',
@@ -451,21 +451,10 @@ const ctx = document.getElementById('myChart').getContext('2d');
         type: 'line',
         borderWidth: 2,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 1)',
         ],
         borderColor:[
-          
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.7)',
         ]
       
       },
@@ -483,3 +472,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
     }
   });
 }
+document.querySelector('.chart-period').addEventListener('click',e=>{
+  if(!e.target.matches('.btn')) return;
+  console.log(e.target);
+})

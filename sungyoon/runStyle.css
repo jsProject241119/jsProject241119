@@ -235,6 +235,8 @@ main button{
   display: flex;
   justify-content: center;
 }
+.board-wrap{
+}
 .board-wrap .period-btns{
   margin: 10px auto;
   width: 200px;
@@ -260,4 +262,21 @@ main button{
   font-size: 20px;
   font-weight: 500;
   margin: 10px 0;
+}
+.chart{
+  width: 500px;
+  height: 300px;
+  font-weight: 500;
+}
+#chart{
+  width: 100% !important;
+  height: 100% !important;
+}
+.chart-period{
+  display: flex;
+  justify-content: center;
+}
+.chart-period .current-period{
+  width: 120px;
+  margin: 0 20px;
 }
