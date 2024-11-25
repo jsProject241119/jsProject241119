@@ -62,10 +62,12 @@ function renderRecords() {
         const $li = document.createElement("li");
     $li.classList.add("record-list-item");
     $li.dataset.id = record.id;
+    const formattedPrice = Math.abs(record.price).toLocaleString();
+    const displayPrice = record.price < 0? `-${formattedPrice}원`:`+${formattedPrice}원`
     $li.innerHTML = `
     <div>${record.date}</div>
             <div>${record.recordTypeInput}</div>
-            <div id ="userPrice"> ${record.price}원 </div>
+            <div id ="userPrice"> ${displayPrice} </div>
             <div> ${record.content} </div>
             <div class="remove"><span class="lnr lnr-cross-circle"></span></div>
         
@@ -91,21 +93,21 @@ function recordRemoveHandler(e){
 
 function recordInsertHandler(e){
     const dateInput = $dateInput.value;
-    let priceInput = $priceInput.value;
+    const priceInput = parseFloat($priceInput.value);
     const contentInput = $contentInput.value;
+
+    if(!dateInput || !priceInput){
+        alert('날짜와 금액은 필수로 입력해주세요');
+        return;
+    }
    
-    if(recordTypeInput==='지출'){
-        priceInput =`-${priceInput}`
-    }
-    else{
-        priceInput =`+${priceInput}`
-    }
+    const formattedPrice = recordTypeInput === '지출' ? -priceInput : +priceInput;
     
     const newRecord = {
         id: String(Math.random()),
         date:dateInput,
         recordTypeInput: recordTypeInput,
-        price: priceInput,
+        price: formattedPrice,
         content:contentInput
     };
     
