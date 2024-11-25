@@ -164,9 +164,9 @@ $incomeBtn.addEventListener("click", () => {
 $submitBtn.addEventListener('click',recordInsertHandler)
 
 $submitBtn.addEventListener('mouseover',()=>{
-    $submitBtn.classList.add("submit-btn-active")
+    $submitBtn.classList.add("submit-btn-active");
+    
 })
-
 $contentInput.addEventListener('keydown',(e)=>{
     if(e.key ==='Enter'){
 $submitBtn.click()
@@ -174,12 +174,18 @@ $submitBtn.click()
 
 })
 $addBtn.addEventListener('click',()=>{
-    $inputcontainer.classList.add('show')
+    $addBtn.classList.add('cover');
+    $inputcontainer.classList.add('show');
+
+    $expenseBtn.classList.add("expense-active");
 })
 
 $closeBtn.addEventListener('click',()=>{
     $inputcontainer.classList.remove('show')
+    $addBtn.classList.remove('cover')
 })
+
+
 
 //============= 코드 실행 영역 ============//
 loadRecords();

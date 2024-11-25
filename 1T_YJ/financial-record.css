@@ -1,41 +1,55 @@
 
 
 @import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: #d9d4ec;
 }
-#full-container{
-    max-width: 800px; /* 중앙 콘텐츠 최대 너비 */
-  margin: 20px auto; /*상하, 좌우 여백*/
-  padding: 0 20px; /* 양쪽 추가 패딩 */
-  gap: 20px;
-  background: #E5D9F2;
+header{
+    font-size: 30px;
+    position: relative;
+    top: 30px;
+    right: 380px;
+
+
 
 }
+
+  
 
 #top{
+    width: 800px;
     text-align: center;
-    margin: 50px;
-    color: #A594F9;
-    font-size: 40px;
+    margin-top: 50px ;
+    margin-bottom: 50px;
+    background: #A594F9;
+    font-size: 33px;
     font-weight: 550;
+    border-radius: 10px;
+    padding-bottom: 10px;
 
 }
 #record-total-container{
-    width: 500px;
+    
     background: #CDC1FF;
     margin-bottom: 100px;
     border-radius: 20px;
     padding: 20px;
     color:black;
+    font-weight: 550;
+
 }
+
+
 #total-record{
     text-align: center;
     font-size: 25px;
-    font-weight: 550;
+    
+    
 }
 #each-total-record{
     margin-top: 20px;
@@ -107,6 +121,7 @@ body{
 #add-button{
     width: 180px;
     height: 50px;
+    font-size: 15px;
 }
 #input-container{
     opacity: 0;
@@ -119,14 +134,26 @@ body{
     align-items: center;
     justify-content: center;
 }
+input::placeholder {
+    color: gray; /* 글자 색상 */
+    font-style: italic; /* 글자 스타일 */
+    font-size: 14px; /* 글자 크기 */
+    opacity: 0.7; /* 투명도 */
+}
+#add-button.cover{
+    opacity: 0;
+}
 #input-container.show{
-    opacity: 1;;
+    opacity: 1;
 }
 #input-box{
     margin: 20px;
     color: white;
+    font-weight: 550;
     display: flex;
     flex-direction: column;
+    
+    
     
     
 }
@@ -136,6 +163,8 @@ body{
 #input-box input{
     border: none;
     height: 20px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
 }
 .content-box{
     margin-top:10px;
@@ -147,6 +176,7 @@ button{
     color: white;
     border-radius: 30px;
     border: none;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 #header-button button{
     font-size: 15px;
