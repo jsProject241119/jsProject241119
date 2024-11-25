@@ -7,16 +7,33 @@
     <style>
       @import url(common.css);
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
       body {
         width: 100%;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: url('/background.jpg')center/cover;
+        background: url('./background1.jpg')center/cover;
         position: relative;
         z-index: -100;
 
+      }
+      .blackBox1{
+        position: absolute;
+        width: 10%;
+        height: 100vh;
+        background: #0e0e0e;
+        top: 0;
+        left: 0;
+      }
+      .blackBox2{
+        position: absolute;
+        width: 10%;
+        height: 100vh;
+        background: #0e0e0e;
+        top: 0;
+        right: 0;
       }
       .white{
         position: absolute;
@@ -32,18 +49,26 @@
         align-items: center;
       }
       .title{
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         height: 200px;
         width: 700px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
       }
       .main-wrap h1{
-        font-size: 100px;
+        color: #1f1f1f;
+        font-size: 120px;
         font-family: 'Pacifico',cursive;
+        margin-bottom: 30px;
       }
-      
+      .main-wrap h2{
+        color: #2f2f2f;
+        font-size: 30px;
+        font-weight: 700;
+        font-family: 'Nanum pen Script';
+      }
       .app-list {
         width: 450px;
         height: 450px;
@@ -51,7 +76,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        background-color: rgba(255,255,255,0.3);
+        background-color: rgba(0,0,0,0.3);
         border-radius: 10px;
 
       }
@@ -63,7 +88,7 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         margin: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1 );
         overflow: hidden;
         position: relative;
         color: white;
@@ -71,38 +96,48 @@
       .app-list li::after{
         content: '';
         position: absolute;
+        font-size: 20px;
+        font-weight: 700;
         top: 0;
-        left: 0;
+        left: -100%;
         width: 0%;
         height: 100%;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.5);
         display: flex;
         justify-content: center;
         align-items: center;
-        transition:  .5s;
+        transition:  0.5s;
       }
       .app-list li:hover::after {
         width: 100%;
+        left: 0;
       }
-      .dark span{
-        color: #fefefe;
-        font-size: 30px;
-        font-weight: 700;
+      .app-list li:nth-child(1):after{
+        content: '북로그';
+      }
+      .app-list li:nth-child(2):after{
+        content: '가계부';
+      }
+      .app-list li:nth-child(3):after{
+        content: '러닝로그';
+      }
+      .app-list li:nth-child(4):after{
+        content: '미니게임';
       }
       #bookLog{
-        background: url('/books.jpg') center/cover;
+        background: url('./books.jpg') center/cover;
         cursor: pointer;
       }
       #accountLog{
-        background: url('/accountBook.jpg') center/cover;
+        background: url('./accountBook.jpg') center/cover;
         cursor: pointer;
       }
       #runLog{
-        background: url('/running.jpg') center/cover;
+        background: url('./running.jpg') center/cover;
         cursor: pointer;
       }
       #game{
-        background: url('/game.jpg') center/cover;
+        background: url('./game.jpg') center/cover;
         cursor: pointer;
       }
     </style>
@@ -110,15 +145,19 @@
   <body>
     <div class="white"></div>
     <main>
+      <div class="blackBox1"></div>
+      <div class="blackBox2"></div>
       <div class="main-wrap">
         <div class="title">
           <h1>Life Logs</h1>
+          <h2>Team 기록해조</h2>
+          <h2>project 기록하는 즐거움</h2>
         </div>
         <ul class="app-list">
-          <li class = "link" id="bookLog"><div class="layout"><span>북로그</span></div></li>
-          <li class = "link" id="accountLog"><div class="layout"><span>가계부</span></div></li>
-          <li class = "link" id="runLog"><div class="layout"><span>러닝로그</span></div></li>
-          <li class = "link" id="game"><div class="layout"><span>미니게임</span></div></li>
+          <li class = "link" id="bookLog" ></li>
+          <li class = "link" id="accountLog"></li>
+          <li class = "link" id="runLog"></li>
+          <li class = "link" id="game"></li>
         </ul>
       </div>
     </main>
