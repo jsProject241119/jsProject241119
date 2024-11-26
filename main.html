@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Logs</title>
+    <style>
+      @import url(./sungyoon/common.css);
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+      /* 기본 스타일 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100%;
+        height: 100vh;
+        background: url('./images/background .jpeg') center/cover no-repeat;
+        display: flex;
+        flex-direction: column; /* 세로로 배치 */
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        position: relative; /* 로고를 위에 배치하기 위해 상대 위치 설정 */
+      }
+
+      /* 로고 이미지 스타일 */
+      #logo {
+        width: 18%; /* 로고의 너비 조정 */
+        height: auto; /* 자동 높이 조정 */
+        margin-bottom: 20px; /* 로고와 아래 컨텐츠 간 간격 */
+      }
+
+      /* 오른쪽 검정 화면 설정 */
+      .container {
+        display: flex;
+        flex-wrap: wrap; /* 한 줄을 넘어가면 다음 줄로 */
+        justify-content: space-between; /* 좌우 간격 조정 */
+        align-items: flex-start; /* 세로 방향 정렬 */
+        width: 35%; /* 검정 박스 영역의 너비 */
+        height: 60%; /* 검정 박스 영역의 세로 크기 */
+        background-color: rgba(0, 0, 0, 0.7); /* 반투명 검정색 배경 */
+        border-radius: 15px;
+        padding: 20px;
+      }
+
+      .container a {
+        width: 48%; /* 2개의 아이템이 한 줄에 나란히 배치 */
+        height: 40%; /* 4개로 나누기 위한 세로 비율 */
+        text-decoration: none;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6); /* 링크 배경색 */
+        border-radius: 10px;
+        margin-bottom: 5%; /* 아래쪽 간격 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .container a:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      /* 개별 배경 이미지 설정 */
+      #bookLog {
+        background: url('./images/books.jpg') center/cover no-repeat;
+      }
+
+      #accountLog {
+        background: url('./images/accountBook.jpg') center/cover no-repeat;
+      }
+
+      #runLog {
+        background: url('./images/running.jpg') center/cover no-repeat;
+      }
+
+      #game {
+        background: url('./images/game.jpg') center/cover no-repeat;
+      }
+
+      /* dark 클래스 스타일 추가 */
+      .dark {
+        opacity: 0.7; /* 어두워지는 효과 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 로고 이미지 추가 -->
+    <img id="logo" src="./images/logo.jpeg" alt="로고" />
+
+    <div class="container">
+      <a href="#" id="bookLog" class="link">북로그</a>
+      <a href="#" id="accountLog" class="link">가계부</a>
+      <a href="#" id="runLog" class="link">러닝로그</a>
+      <a href="#" id="game" class="link">미니게임</a>
+    </div>
+
+    <script>
+      document.querySelector(".container").addEventListener("mouseover", (e) => {
+        if (!e.target.matches(".link")) return;
+        e.target.classList.add("dark"); // 마우스 오버 시 dark 클래스 추가
+      });
+
+      document.querySelector(".container").addEventListener("mouseout", (e) => {
+        if (!e.target.matches(".link")) return;
+        e.target.classList.remove("dark"); // 마우스 아웃 시 dark 클래스 제거
+      });
+    </script>
+  </body>
+</html>
