@@ -156,6 +156,9 @@ body{
   background: #adb5bd;
   margin-left: 10px;
 }
+.slot .lnr{
+  font-size: 15px;
+}
 /* 모달끝 */
 /* ===========메인================== */
 main{

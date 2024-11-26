@@ -271,6 +271,7 @@ function modalOpen() {
   $modalOverlay.style.display = "block";
   setToday();
 }
+//모달의 기본값 표시
 function setToday(){
   const today = new Date();
   const year = today.getFullYear();
@@ -280,11 +281,19 @@ function setToday(){
   const formattedDate = `${year}-${month}-${day}`;
   $date.value = formattedDate;
   const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0'); // 시 두 자리
-        const minutes = String(now.getMinutes()).padStart(2, '0'); // 분 두 자리
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
 
         const currentTime = `${hours}:${minutes}`;
   $time.value = currentTime;
+}
+function js(e){console.log(JSON.stringify(e))};
+//수정할 객체 모달에 표시
+function setRedo(id){
+  const redoDataArr = runData.filter(data=>data.id===id);
+  const redoData = redoDataArr[0];
+  js(redoData);
+  $date.value = redoData.date;
 }
 $closeBtn.addEventListener("click", () => {
   modalClose();
@@ -382,10 +391,14 @@ $lnr.forEach(lnr=>{
 function redoOpen(){
   document.querySelectorAll('.lnr-redo').forEach(redo=>{
     redo.addEventListener('click',e=>{
+      thisId = redo.closest('.added').dataset.id;
+      console.log(thisId)
       modalOpen();
+      setRedo(thisId);
     })
   })
 }
+//차트 렌더
 function renderChart(){
   if(myChart) myChart.destroy();
   const thisWeek = getTargetWeek(new Date());
