@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="financial-record.css" />
     <!-- linear icons -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     <!-- custom js -->
     <script src="financial-record.js" defer></script>
   </head>
@@ -48,7 +48,9 @@
               </div>
       
           </section>
+          <div id="full-record-list-text"><span>전체내역</span></div>
           <section id="full-record-list">
+          
             <div id="list-title">
               <span>날짜</span>
               <span>종류</span>
@@ -69,7 +71,7 @@
             </ul>
           </section>
           <section id="add-container">
-            <button id ="add-button">새 거래내역 추가</button>
+            <button id ="add-button"><i class="fas fa-plus-circle"></i><br>새 거래내역 추가</button>
           </section>
           <section id="full-input-container">
             <div id="input-container">
@@ -79,15 +81,15 @@
               </div>
               <div id="input-box">
                 <div class="calender-box">
-                  <label for="calender">날짜: </label>
+                  <label for="calender">날짜 : </label>
                   <input type="date" id="dateInput" />
                 </div>
                 <div class="price-box">
-                  <label for="price">금액: </label>
+                  <label for="price">금액 : </label>
                   <input id="priceInput" placeholder="금액을 입력하세요"/>
                 </div>
                 <div class="content-box">
-                  <label for="content">내용: </label>
+                  <label for="content">내용 : </label>
                   <input id="contentInput"  placeholder="내용을 입력하세요" />
                 </div>
               </div>

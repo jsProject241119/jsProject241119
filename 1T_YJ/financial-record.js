@@ -57,6 +57,9 @@ function loadRecords(){
 }
 
 function renderRecords() {
+
+    records.sort((a,b) => new Date(a.date)- new Date(b.date));
+
     $recordsUl.innerHTML ='';
     records.forEach((record) => {
         const $li = document.createElement("li");
@@ -80,6 +83,10 @@ AddTotalRecords();
 function recordRemoveHandler(e){
     
     if(!e.target.matches('.remove span')) return;
+
+    const isConfirmed = confirm("정말로 삭제하시겠습니까?");
+    
+    if(!isConfirmed) return;
     
     const $targetLi = e.target.closest('.record-list-item');
     const dataId = $targetLi.dataset.id;
