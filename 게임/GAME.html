@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위 & 아래 게임</title>
+
+    <!-- reset.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="./main.css">
+
+    <!-- custom js -->
+    <script src="./app.js" defer></script>
+
+</head>
+<body>
+
+    <div class="wrapper">
+      <header class="main-title">
+        <h1>신나는 위 & 아래 게임~!</h1>
+      </header>
+          <article class="main">
+            <section class="number-wrapper">
+                <h2>
+                <em id="begin">1</em>부터 <em id="end">45</em>사이의 숫자를 입력하세요.
+                </h2>
+                <div id="numbers" role="button" aria-lebel="숫자 선택 영역"></div>
+              </section>
+            </article>
+
+        <aside class="result">
+            <div id="up" aria-lebel="위">위!</div>
+            <div id="down" aria-label="아래">아래!</div>
+        </aside>
+
+        <footer id="finish">종료되었습니다!</footer>
+    </div>
+   
+</body>
+</html>
