@@ -15,31 +15,22 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        background: url('./images/background.jpg')center/cover;
-
+        background: url(./images/background.avif) center/cover;
 
       }
       main{
         width: 70%; 
         height: 100vh;
-        background: url('./images/background1.png');
         z-index: 10;
       }
-      .curtain{
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        background: rgba(0,0,0,0.4);
-        z-index: 1;
-      }
+    
       .main-wrap {
-        flex-direction: column;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: relative;
       }
       .title{
-        margin-bottom: 50px;
+        position: absolute;
+        left: -100px;
+        top: 500px;
         height: 200px;
         width: 700px;
         display: flex;
@@ -47,18 +38,26 @@
         justify-content: center;
         align-items: center;
       }
+      .logo{
+        position: absolute;
+        left: 100px;
+      }
       .main-wrap h1{
         font-size: 120px;
         font-family: 'Pacifico',cursive;
         margin:60px 0 40px 0;
       }
       .main-wrap h2{
-        color: #2f2f2f;
-        font-size: 30px;
+        color: #4f4f4f;
+        font-size: 50px;
         font-weight: 700;
         font-family: 'Nanum pen Script';
+        line-height: 1.5;
       }
       .app-list {
+        position: absolute;
+        top: 250px;
+        right: 40px;
         width: 450px;
         height: 450px;
         display: flex;
@@ -70,11 +69,11 @@
 
       }
       .app-list li {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         border: 1px solid #000;
         background-color: #fefefe;
-        border: 1px solid #ccc;
+        border: 1px solid #3e3e3e;
         border-radius: 10px;
         margin: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1 );
@@ -135,11 +134,10 @@
     <div class="curtain"></div>
     <div class="white"></div>
     <main>
-      <div class="blackBox1"></div>
-      <div class="blackBox2"></div>
       <div class="main-wrap">
+        <div class="logo"><img src="./images/logo1.png" alt="팀로고"></div>
         <div class="title">
-          <h1>Life Logs</h1>
+          <!-- <h1>Life Logs</h1> -->
           <h2>Team 기록해조</h2>
           <h2>project 기록하는 즐거움</h2>
         </div>

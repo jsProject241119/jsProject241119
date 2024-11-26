@@ -1,5 +1,4 @@
-// 전역 변수
-const runData = [
+let runData = [
   {
 		"id":"1",
 		"memo":"아침 러닝",
@@ -70,6 +69,7 @@ const runData = [
 const test1 = calculateAverageSpeed(11.5,1,8,15);
 // console.log(test1);
 const $runList = document.getElementById("runList");
+const $buttons = document.querySelector('.buttons');
 const $submitBtn = document.querySelector(".submit-btn");
 const $closeBtn = document.querySelector(".close-btn");
 const $modalOverlay = document.querySelector(".modal-overlay");
@@ -292,14 +292,30 @@ function js(e){console.log(JSON.stringify(e))};
 function setRedo(id){
   const redoDataArr = runData.filter(data=>data.id===id);
   const redoData = redoDataArr[0];
+  const targetIndex = runData.findIndex(item => item.id === redoData.id);
   js(redoData);
+  $memo.value = redoData.memo;
   $date.value = redoData.date;
+  $time.value = redoData.time;
+
+  if (targetIndex !== -1) {
+    runData[targetIndex] = redoData;
+  }
+  
+  $submitBtn.remove();
+  $newButton = document.createElement('button');
+  $newButton.classList.add('redo-btn');
+  $newButton.textContent="수정";
+  $newButton.addEventListener('click',e=>{
+    submitHandler();
+  })
+  $buttons.insertBefore($newButton,$buttons.firstChild);
 }
 $closeBtn.addEventListener("click", () => {
   modalClose();
 });
 //모달 제출
-$submitBtn.addEventListener("click", () => {
+function submitHandler(){
   getData();
   const averageSpeed = calculateAverageSpeed(
     runKillo,
@@ -332,6 +348,10 @@ $submitBtn.addEventListener("click", () => {
   render();
   console.log(JSON.stringify(runData));
   modalClose();
+}
+//저장하기
+$submitBtn.addEventListener("click", () => {
+  submitHandler();
 });
 //추가하기
 $addBtn.addEventListener("click", () => {
