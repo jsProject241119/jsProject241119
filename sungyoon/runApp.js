@@ -87,6 +87,7 @@ let runKillo = 0;
 let runtimeHour = 0;
 let runtimeMinute = 0;
 let runtimeSecond = 0;
+let currentId = 0;
 
 //해당 일자가 속한 주 계산
 function getTargetWeek(targetDay){
@@ -100,6 +101,7 @@ function getTargetWeek(targetDay){
     getWeekEnd : ()=>new Date(weekEnd)
   }
 }
+//페이지 켜지면 하는일
 document.addEventListener("DOMContentLoaded", () => {
   slots.forEach((slot) => {
     const upButton = slot.previousElementSibling;
@@ -117,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slot.textContent = currentNumber;
     });
   });
+  redoOpen();
   render();
 });
 //모달의 슬롯 번호 취합
@@ -212,13 +215,11 @@ function render() {
       </div>
     `;
     $runList.append($newLi);
-  });
-  renderBoardHandler();
-  renderChart()
-  getToday();
-  iconHover();
-  redoOpen();
-
+  });//객체에 있는거 가져옴
+  renderBoardHandler();//보드에 표기
+  renderChart()//차트 표기
+  getToday();//오늘 날짜 한글로 가져오기
+  iconHover();//아이콘에 효과 추과
 }
 //평균 시속 구하기
 function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
@@ -263,6 +264,7 @@ function modalClose() {
   $memo.value = "";
   $date.value = "";
   $time.value = "";
+  currentId=0;
   slots.forEach((e) => (e.textContent = 0));
 }
 //모달 열기 기능
@@ -292,16 +294,11 @@ function js(e){console.log(JSON.stringify(e))};
 function setRedo(id){
   const redoDataArr = runData.filter(data=>data.id===id);
   const redoData = redoDataArr[0];
-  const targetIndex = runData.findIndex(item => item.id === redoData.id);
   js(redoData);
   $memo.value = redoData.memo;
   $date.value = redoData.date;
   $time.value = redoData.time;
 
-  if (targetIndex !== -1) {
-    runData[targetIndex] = redoData;
-  }
-  
   $submitBtn.remove();
   $newButton = document.createElement('button');
   $newButton.classList.add('redo-btn');
@@ -310,6 +307,7 @@ function setRedo(id){
     submitHandler();
   })
   $buttons.insertBefore($newButton,$buttons.firstChild);
+  addListnerToRedoBtn();
 }
 $closeBtn.addEventListener("click", () => {
   modalClose();
@@ -349,6 +347,44 @@ function submitHandler(){
   console.log(JSON.stringify(runData));
   modalClose();
 }
+//모달 수정 제출
+function redoSubmitHandler(){
+  getData();
+  console.log('runkillo : '+runKillo);
+  const averageSpeed = calculateAverageSpeed(
+    runKillo,
+    runtimeHour,
+    runtimeMinute,
+    runtimeSecond
+  );
+  const roundAverage = Math.round(averageSpeed * 100) / 100;
+  const newRun = {
+    id: currentId,
+    memo: $memo.value,
+    date: $date.value,
+    time: $time.value,
+    Killo: runKillo,
+    hour: runtimeHour,
+    minute: runtimeMinute,
+    second: runtimeSecond,
+    pace: roundAverage
+  };
+  js(newRun);
+  let isTimeSet;
+  if (!newRun.hour && !newRun.minute && !newRun.second) {
+    isTimeSet = false;
+  } else isTimeSet = true;
+  if (!newRun.date || !newRun.time || !newRun.Killo || !isTimeSet) {
+    alert("날짜/시간/거리 는 필수 항목입니다.");
+    return;
+  }
+  const targetIndex = runData.findIndex(data => data.id === currentId);
+  if (targetIndex !== -1) {
+    runData[targetIndex] = newRun; // 기존 위치에 새 객체 추가
+  }
+  render();
+  modalClose();
+}
 //저장하기
 $submitBtn.addEventListener("click", () => {
   submitHandler();
@@ -366,6 +402,13 @@ $runList.addEventListener('click',e=>{
   runData.splice(0,runData.length,...runData.filter(run=>run.id!==dataId));
   render();
 });
+//수정하기버튼에 리스너 추가
+function addListnerToRedoBtn(){
+  document.querySelector('.redo-btn').addEventListener('click',e=>{
+    redoSubmitHandler();
+  })
+
+}
 // 기간 필터링 버튼 리스너
 $periodBtns.addEventListener('click',e=>{
   if(!e.target.matches('.period-btn'))return;
@@ -407,11 +450,12 @@ $lnr.forEach(lnr=>{
   })
 })
 }
-//수정 이벤트 리스너
+//수정아이콘 이벤트 리스너
 function redoOpen(){
   document.querySelectorAll('.lnr-redo').forEach(redo=>{
     redo.addEventListener('click',e=>{
       thisId = redo.closest('.added').dataset.id;
+      currentId=thisId;
       console.log(thisId)
       modalOpen();
       setRedo(thisId);
