@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
       slot.textContent = currentNumber;
     });
   });
-  redoOpen();
   render();
 });
 //모달의 슬롯 번호 취합
@@ -309,6 +308,7 @@ function setRedo(id){
   $buttons.insertBefore($newButton,$buttons.firstChild);
   addListnerToRedoBtn();
 }
+//모달 닫기
 $closeBtn.addEventListener("click", () => {
   modalClose();
 });
@@ -451,17 +451,15 @@ $lnr.forEach(lnr=>{
 })
 }
 //수정아이콘 이벤트 리스너
-function redoOpen(){
-  document.querySelectorAll('.lnr-redo').forEach(redo=>{
-    redo.addEventListener('click',e=>{
-      thisId = redo.closest('.added').dataset.id;
-      currentId=thisId;
-      console.log(thisId)
-      modalOpen();
-      setRedo(thisId);
-    })
-  })
-}
+
+$runList.addEventListener('click',e=>{
+  if(!e.target.matches('.lnr-redo'))return;
+  thisId = e.target.closest('.added').dataset.id;
+  currentId=thisId;
+  modalOpen();
+  setRedo(thisId);
+});
+
 //차트 렌더
 function renderChart(){
   if(myChart) myChart.destroy();
