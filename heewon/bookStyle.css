@@ -44,7 +44,7 @@ a{
 /* 제목 박스 */
 
 h1 {
-  background-color: #B0C6E4;
+  background-color:#8EACCD;
   max-width: 800px; /* 최대 너비 설정 */
   width: 100%; /* 부모 컨테이너에 맞게 확장 */
   margin: 0 auto; /* 중앙 정렬 */
@@ -52,6 +52,8 @@ h1 {
   border-radius: 8px;
   font-size: 20px;
   color: white;
+  box-sizing: border-box;
+
 }
 
 
@@ -94,9 +96,6 @@ h2 {
   border: 50px;
 }
 
-h1 {
-  background-color:  #8EACCD;
-}
 
 h2 {
   background-color: #B0C6E4;
