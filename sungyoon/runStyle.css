@@ -367,3 +367,27 @@ main{
   font-style: italic;
   line-height: 1.3;
 }
+.modal-content2 .sticker-img{
+  background: url('./wow100.png')no-repeat center/cover;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+}
+.modal-content2{
+  font-size: 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 25px;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+}

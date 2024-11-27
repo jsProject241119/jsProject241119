@@ -96,6 +96,7 @@ const $weekBtn = document.getElementById('week-btn');
 const $monthBtn = document.getElementById('month-btn');
 const $periodTxt = document.querySelector('.period');
 const $period = document.getElementById('today');
+let popEvent=0;
 let selectedPeriod ="today";
 let $runDataF=[];
 let myChart;
@@ -241,6 +242,11 @@ function render() {
   renderChart()//차트 표기
   getToday();//오늘 날짜 한글로 가져오기
   iconHover();//아이콘에 효과 추과
+  const sumRun = runData.reduce((sum,data)=>sum+=data.Killo,0);
+  if((sumRun>=100) && (popEvent===0)){
+    popEvent=1;
+    document.querySelector('.modal-content2').style.display = 'block';
+  }
 }
 //평균 시속 구하기
 function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
@@ -606,4 +612,7 @@ document.querySelector('.lnr-chevron-right-circle').addEventListener('click',e=>
   currentDay.setDate(currentDay.getDate() + 7);
   renderChart();
   displayCurrentPeriod();
+})
+document.querySelector('.modal-content2').addEventListener('click',()=>{
+  document.querySelector('.modal-content2').style.display = 'none';
 })
