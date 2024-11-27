@@ -36,15 +36,23 @@ function renderBookList() {
     // 삭제 버튼 클릭 이벤트 등록
     const $deleteButton = $li.querySelector('.delete-btn');
     $deleteButton.addEventListener('click', () => {
-      // 삭제 버튼을 누른 책 정보를 배열에서 제거
-      bookList.splice(index, 1);
-      renderBookList(); // 리스트 다시 렌더링
+      //삭제 확인 대화창
+      const confirmDelete = confirm('정말로 삭제하시겠습니까?');
+      if (confirmDelete) {
+        // 삭제 버튼을 누른 책 정보를 배열에서 제거
+        bookList.splice(index, 1);
+        renderBookList(); // 리스트 다시 렌더링
+        saveToLocalStorage(); // 로컬 스토리지 업데이트
+       
+      }
     });
 
     // li 요소를 ul에 추가
     $bookListUl.appendChild($li);
   });
 }
+
+
 
 // 책 정보를 저장하는 함수
 function saveBookInfo(event) {
@@ -59,7 +67,7 @@ function saveBookInfo(event) {
 
   // 입력 값 유효성 검사
   if (!title || !author || !startDate || !endDate || !review) {
-    alert('작성을 모두 입력해 주세요.');
+    alert('내용을 모두 입력해 주세요.');
     return;
   }
 
@@ -77,6 +85,7 @@ function saveBookInfo(event) {
 
   // 책 정보 리스트 렌더링
   renderBookList();
+  saveToLocalStorage(); // 로컬 스토리지에 저장
 
   // 입력 필드 초기화
   $bookTitleInput.value = '';
@@ -85,6 +94,24 @@ function saveBookInfo(event) {
   $endDateInput.value = '';
   $bookReviewInput.value = '';
 }
+
+// ===== 로컬 스토리지 ===== //
+//로컬 스토리지 저장
+function saveToLocalStorage(){
+  localStorage.setItem('bookList', JSON.stringify(bookList));
+}
+//-> 배열을 문자열로 변환해야 하기 떄문에 JSON.strigify() 사용
+
+// 로컬 스토리지에서 불러오기
+function loadFromLocalStorage(){
+  const saveBooks = JSON.parse(localStorage.getItem('bookList')) || [];
+  bookList = saveBooks;
+  renderBookList();
+}
+//-> 가져온 데이터가 문자열이기 때문에 JSON.parse() 로 다시 배열로 변환함. 데이터가 없을 경우 기본값으로 빈 배열[]을 사용
+
+
+
 
 //========= 이벤트 등록 영역 ========//
 // 저장하기 버튼 클릭 이벤트
@@ -100,3 +127,7 @@ $cancelButton.addEventListener('click', (event) => {
   $endDateInput.value = '';
   $bookReviewInput.value = '';
 });
+
+//페이지 로드 시 로컬스토리지 데이터 불러오기
+window.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+//-> DOMContentLoaded 이벤트는 HTML 문서가 완전히 로드된 후 실행됨 
