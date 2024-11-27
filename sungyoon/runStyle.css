@@ -326,3 +326,27 @@ main button{
   width: 120px;
   margin: 0 20px;
 }
+main{
+  position: relative;
+}
+.ad-banner{
+  position: absolute;
+  right: 150px;
+  width: 150px;
+  height: 400px;
+  background: url('./ad-banner.webp') no-repeat center/cover;
+  display: flex;
+  flex-direction: column;
+}
+.ad-banner .air{
+  flex: 5;
+  padding: 10px;
+  color: #fff;
+}
+.ad-banner .banner-text{
+  flex: 1;
+  color: #fff;
+  padding: 10px;
+  font-style: italic;
+  line-height: 1.3;
+}

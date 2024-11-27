@@ -65,6 +65,17 @@ let runData = [
 		"second":23,
 		"pace":10.1
 	},
+  {
+		"id":"7",
+		"memo":"",
+		"date":"2024-11-12",
+		"time":"20:30",
+		"Killo":4,
+		"hour":0,
+		"minute":30,
+		"second":44,
+		"pace": 8
+	},
 ];
 const test1 = calculateAverageSpeed(11.5,1,8,15);
 // console.log(test1);
