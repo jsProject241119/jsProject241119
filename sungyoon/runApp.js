@@ -91,6 +91,11 @@ const $time = document.getElementById("time");
 const $addBtn = document.getElementById("add-btn");
 const slots = document.querySelectorAll(".number-display");
 const $periodBtns = document.querySelector(".period-btns");
+const $todayBtn = document.getElementById('today-btn');
+const $weekBtn = document.getElementById('week-btn');
+const $monthBtn = document.getElementById('month-btn');
+const $periodTxt = document.querySelector('.period');
+const $period = document.getElementById('today');
 let selectedPeriod ="today";
 let $runDataF=[];
 let myChart;
@@ -250,7 +255,7 @@ function calculateAverageSpeed(distanceKm, hours, minutes, seconds) {
   return averageSpeed; // km/h
 }
 
-//오늘 날짜 한글로 가져오기
+//보드에 오늘 날짜 한글로 가져오기
 function getToday() {
   const today = new Date();
   const formatter = new Intl.DateTimeFormat("ko-KR", {
@@ -259,6 +264,17 @@ function getToday() {
     day: "numeric",
   });
   document.getElementById("today").textContent = formatter.format(today);
+}
+//보드에 이번주 표시
+function getWeek(){
+  const thisWeek = getTargetWeek(new Date());
+  const weekStart = monthAndDay(thisWeek.getWeekStart());
+  const weekEnd = monthAndDay(thisWeek.getWeekEnd());
+  $period.textContent = `${weekStart} - ${weekEnd}`;
+}
+function getMonth(){
+  const month = new Date().getMonth()+1;
+  $period.textContent = `${month}월`;
 }
 //yyyy--mm--dd형식 변환기
 function getFormattedDate(date = new Date()) {
@@ -355,6 +371,7 @@ function setRedo(id){
 
   $submitBtn.style.display = 'none';
   $redoBtn.style.display = 'block';
+  slots
 }
 //수정하기버튼에 리스너 추가
 $redoBtn = document.querySelector('.redo-btn');
@@ -433,14 +450,29 @@ $periodBtns.addEventListener('click',e=>{
   if(!e.target.matches('.period-btn'))return;
   if(e.target.matches('#today-btn')){
     selectedPeriod = "today";
+    getToday();
+    $periodTxt.textContent = '오늘';
+    $todayBtn.style.color = 'yellow';
+    $weekBtn.style.color = 'white';
+    $monthBtn.style.color = 'white';
     renderBoardHandler();
   }
   if(e.target.matches('#week-btn')){
     selectedPeriod = "week";
+    getWeek();
+    $periodTxt.textContent = '이번 주';
+    $todayBtn.style.color = 'white';
+    $weekBtn.style.color = 'yellow';
+    $monthBtn.style.color = 'white';
     renderBoardHandler();
   }
   if(e.target.matches('#month-btn')){
     selectedPeriod = "month";
+    getMonth();
+    $periodTxt.textContent = '이번 달';
+    $todayBtn.style.color = 'white';
+    $weekBtn.style.color = 'white';
+    $monthBtn.style.color = 'yellow';
     renderBoardHandler();
   }
 })

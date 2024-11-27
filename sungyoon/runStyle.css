@@ -250,6 +250,12 @@ main button{
   background-color: #ffffff;
   margin: 20px;
 }
+#runList .added:nth-child(){
+
+}
+#runList .added:nth-child(even){
+  background: #e0d994a4;
+}
 #runList .added{
   width: 95%;
   height: 30px;
@@ -293,6 +299,17 @@ main button{
   font-size: 17px;
   border-radius: 10px;
   border: none;
+}
+#today-btn{
+  color: yellow;
+}
+#today::after{
+  content: '';
+  display: block;
+  width: 200px;
+  height: 2px;
+  background: #D7E5CA;
+  margin-top: 10px;
 }
 .performance{
   width: 250px;
