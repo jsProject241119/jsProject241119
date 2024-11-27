@@ -1,0 +1,328 @@
+@import url(common.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css");
+header{
+  display: flex;
+  justify-content: center;
+}
+ 
+.italic{
+  font-style: italic;
+}
+body{
+  z-index: -1;
+  background: #D2E0FB;
+  font-family: 'NanumBarunGothic','sans-serif';
+  color: #555;
+}
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#menu-box{
+  width: 60%;
+  height: 50px;
+  padding: 10px;
+  font-size: 30px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.fas{
+  margin: 5px;
+}
+.home{
+  position: absolute;
+  left: 0;
+}
+.head_container{
+  width: 60%;
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #8EACCD;
+  position: relative;
+
+}
+.head_container h1{
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+}
+.head_container a{
+  position: absolute;
+  left: 50px;
+}
+.head_container img{
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+.head_container .nav .menu{
+  margin: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border: 1px solid #000;
+  border-radius: 10%;
+  padding: 8px;
+  color: #fff;
+  background: #1f1f1f;
+}
+/* 모달 */
+.modal-content h2{
+  font-size: 30px;
+  font-weight: 700;
+}
+.modal-content h2::after{
+  content:'';
+  display: block;
+  width: 130px;
+  height: 2px;
+  background: #8EACCD;
+  margin-bottom: 10px;
+  margin-top: -8px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  display:  none;
+}
+.modal-content {
+  font-size: 18px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  line-height: 2;
+}
+.modal-content p{
+  font-weight: 700;
+  color: #495057;
+}
+.modal-content input{
+  font-size: 15px;  
+  width: 100%;
+  border: 1px solid #868296;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.input_elements span{
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 25px;
+}
+.run_killo{
+  display: flex;
+  justify-content: flex-end;
+}
+.input_elements .slot{
+  margin: 0 auto;
+}
+.input_elements .number-display{
+  text-align: center;
+  font-size: 20px;
+  background: #f8f9fa
+}
+.input_elements button:hover{
+  background: lightblue;
+}
+.input_elements button{
+  font-size: 10px;
+  border: none;
+  width: 50px; 
+  opacity: 0.5;
+  cursor: pointer;
+  background: none;
+}
+.run_time{
+  display: flex;
+}
+.run_time button:hover{
+  background: lightblue;
+}
+.run_time button{
+  width: 40px;
+}
+.buttons{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.buttons>button{
+  background: #8EACCD;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+.buttons>button:last-child{
+  background: #adb5bd;
+  margin-left: 10px;
+}
+.slot .lnr{
+  font-size: 15px;
+}
+.redo-btn{
+  display: none;
+  background: #000;
+}
+/* 모달끝 */
+/* ===========메인================== */
+main{
+  display: flex;
+  justify-content: center;
+}
+.main_container{
+  width: 60%;
+  background: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: center;
+}
+.main_wrap{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.box{
+  width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1 );
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin: 20px;
+  min-height: 50px;
+}
+.add-box{
+  position: relative;
+  height: 100px;
+  padding: 20px;
+}
+.add-box h2{
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+.add-box button{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #8EACCD;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  font-size: 15px;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+main button{
+  height: 30px;
+  cursor: pointer;
+}
+.main_wrap #runList{
+  width: 400px;
+  height: 300px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-y: hidden;
+  overflow-y: scroll;
+  background-color: #ffffff;
+  margin: 20px;
+}
+#runList .added{
+  width: 95%;
+  height: 30px;
+  background: #FFF9BF;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  font-weight: 500;
+  display: flex;
+}
+.added .info span:nth-child(1){
+  max-width: 150px;
+  overflow: hidden;
+}
+.added .info{
+  flex: 6;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.added .lnr{
+  cursor: pointer;
+}
+.added .icon{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.board-wrap{
+}
+.board-wrap .period-btns{
+  margin: 10px auto;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.board-wrap .period-btns>button{
+  background: #8EACCD;
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  border-radius: 10px;
+  border: none;
+}
+.performance{
+  width: 250px;
+  height: 383px;
+  padding: 20px;
+  line-height: 1.2;
+}
+.performance span{
+  font-size: 40px;
+}
+.performance h2{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.chart{
+  padding: 20px;
+  width: 700px;
+  height: 400px;
+  font-weight: 500;
+}
+#chart{
+  width: 100% !important;
+  height: 100% !important;
+}
+.chart-period{
+  display: flex;
+  justify-content: center;
+}
+.chart-period .current-period{
+  width: 120px;
+  margin: 0 20px;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Logs</title>
+    <style>
+      @import url(./sungyoon/common.css);
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background: url(./images/background.avif) center/cover;
+
+      }
+      main{
+        width: 70%; 
+        height: 100vh;
+        z-index: 10;
+      }
+    
+      .main-wrap {
+        position: relative;
+      }
+      .title{
+        position: absolute;
+        left: -100px;
+        top: 500px;
+        height: 200px;
+        width: 700px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .logo{
+        position: absolute;
+        left: 100px;
+      }
+      .main-wrap h1{
+        font-size: 120px;
+        font-family: 'Pacifico',cursive;
+        margin:60px 0 40px 0;
+      }
+      .main-wrap h2{
+        color: #4f4f4f;
+        font-size: 50px;
+        font-weight: 700;
+        font-family: 'Nanum pen Script';
+        line-height: 1.5;
+      }
+      .app-list {
+        position: absolute;
+        top: 250px;
+        right: 40px;
+        width: 450px;
+        height: 450px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 10px;
+
+      }
+      .app-list li {
+        width: 180px;
+        height: 180px;
+        border: 1px solid #000;
+        background-color: #fefefe;
+        border: 1px solid #3e3e3e;
+        border-radius: 10px;
+        margin: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1 );
+        overflow: hidden;
+        position: relative;
+        color: white;
+      }
+      .app-list li::after{
+        content: '';
+        position: absolute;
+        font-size: 20px;
+        font-weight: 700;
+        top: 0;
+        left: -100%;
+        width: 0%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:  0.5s;
+      }
+      .app-list li:hover::after {
+        width: 100%;
+        left: 0;
+      }
+      .app-list a:nth-child(1)>li:after{
+        content: '북로그';
+      }
+      .app-list a:nth-child(2)>li:after{
+        content: '가계부';
+      }
+      .app-list a:nth-child(3)>li:after{
+        content: '러닝로그';
+      }
+      .app-list a:nth-child(4)>li:after{
+        content: '미니게임';
+      }
+      #bookLog{
+        background: url('./images/books.jpg') center/cover;
+        cursor: pointer;
+      }
+      #accountLog{
+        background: url('./images/accountBook.jpg') center/cover;
+        cursor: pointer;
+      }
+      #runLog{
+        background: url('./images/running.jpg') center/cover;
+        cursor: pointer;
+      }
+      #game{
+        background: url('./images/game.jpg') center/cover;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="curtain"></div>
+    <div class="white"></div>
+    <main>
+      <div class="main-wrap">
+        <div class="logo"><img src="./images/logo1.png" alt="팀로고"></div>
+        <div class="title">
+          <!-- <h1>Life Logs</h1> -->
+          <h2>Team 기록해조</h2>
+          <h2>project 기록하는 즐거움</h2>
+        </div>
+        <ul class="app-list">
+          <a href="https://naver.com/">
+            <li class = "link" id="bookLog" ></li>
+          </a>
+          <a href="https://daum.net/">
+            <li class = "link" id="accountLog"></li>
+          </a>
+          <a href="./sungyoon/runPlan.html">
+            <li class = "link" id="runLog"></li>
+          </a>
+          <a href="https://google.com/">
+            <li class = "link" id="game"></li>
+          </a>
+        </ul>
+      </div>
+    </main>
+    <script>
+      document.querySelector('.app-list').addEventListener('mouseover',e=>{
+        if(!e.target.matches('.link')) return;
+        e.target.classList.add('dark');
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="runStyle.css">
+  <link rel="icon" href="./favicon.png">
+  <script src="runApp.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+  <title>RunManager</title>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <div id="menu-box">
+      <a  class="home" ,href="../index.html">
+        <i class="fas fa-home"></i>
+      </a>
+
+      <a href="../heewon/bookPlanhtml.html">
+        <i class="fas fa-book"></i>
+      </a>
+      <a href="../1T_YJ/financial-record.html">
+        <i class="fas fa-search-dollar"></i>
+      </a>
+      <a href="">
+        <i class="fas fa-running"></i>
+      </a>
+      <a href="">
+        <i class="fas fa-gamepad"></i>
+      </a>
+    </div>
+
+    <div class="head_container">
+      <h1>Run Manager </h1>
+      <img src="./runicon.png" alt="run-icon">
+    </div>
+  </header>
+  <!-- 메인 -->
+  <main>
+    <div class="main_container">
+      <div class="main_wrap">
+        <div class="memo-box">
+          <div class="add-box box">
+            <h2>"오늘은 얼마나 달리셨나요?"</h2>
+            <button id="add-btn">추가하기</button>
+          </div>
+          <ul class="box", id="runList">
+            <!-- <li class="added">
+              <div class="info"><span>DATE</span><span>MEMO</span><span>KM</span></div>
+              <div class="icon"><span class="lnr lnr-cross"></span></div>
+            </li> -->
+          </ul>
+        </div>  
+        <div class="board-wrap">
+          <div class="period-btns">
+            <button class="period-btn" id="today-btn">오늘</button>
+            <button class="period-btn" id="week-btn">이번 주</button>
+            <button class="period-btn" id="month-btn">이번 달</button>
+          </div>
+          <div class="performance box">
+            <div class="period">오늘</div>
+            <p id="today"></p>
+            <div class="run-board italic">
+              <h2 id=""></h2>
+              <h2>달린거리</h2>
+              <span id="board-killo">00.00km</span>
+              <h2>달린시간</h2>
+              <span id="board-hour">00</span>
+              <span>:</span>
+              <span id="board-minute">00</span>
+              <span>:</span>
+              <span id="board-second">00</span>
+              <h2>평균페이스</h2>
+              <span id="board-phase">00</span>
+              <span>km/h</span>
+            </div>
+        </div>
+      </div>
+      <div class="chart box">
+        <div class="chart-period">
+          <div class="prv-btn btn"><span class="lnr lnr-chevron-left-circle"></span></div>
+          <div class="current-period">11/24 - 11/30</div>
+          <div class="nxt-btn btn"><span class="lnr lnr-chevron-right-circle"></span></div>
+        </div>
+        <canvas id="myChart"></canvas>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ======== 모 달 ============ -->
+  <div class="modal-overlay"></div> <!-- 배경 레이어 -->
+  <div class="modal-content">
+    <h2>러닝 추가</h2>
+    <section class="input_container">
+      <div class="input_elements">
+        <p>메모</p>
+        <input type="text" id="memo">
+      </div>
+      <div class="input_elements">
+        <p>날짜 및 시간</p>
+        <input type="date" id="date">
+        <input type="time" id="time">
+      </div>
+      <div class="input_elements">
+        <p>거리</p>
+        <div class="run_killo">
+          <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="slot1">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="slot2">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <span>.</span>
+        <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="slot3">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="slot4">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <span>km</span>
+        </div>
+      </div>
+      <div class="input_elements">
+        <p>운동 시간</p>
+        <div class="run_time">
+          <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="tSlot1">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="tSlot2">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <span>시</span>
+        <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="slot3">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <div class="slot">
+            <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+            <div class="number-display" id="tSlot4">0</div>
+            <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <span>분</span>
+        <div class="slot">
+          <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+          <div class="number-display" id="tSlot5">0</div>
+          <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <div class="slot">
+          <button class="btn-up"><span class="lnr lnr-chevron-up"></span></button>
+          <div class="number-display" id="tSlot6">0</div>
+          <button class="btn-down"><span class="lnr lnr-chevron-down"></span></button>
+        </div>
+        <span>초</span>
+      </div>
+      </div>
+    </section>
+    <div class="buttons">
+      <button class="redo-btn">수정</button>
+      <button class="submit-btn">저장</button>
+      <button class="close-btn">취소</button>
+    </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
