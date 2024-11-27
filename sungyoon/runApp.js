@@ -88,6 +88,7 @@ let runtimeHour = 0;
 let runtimeMinute = 0;
 let runtimeSecond = 0;
 let currentId = 0;
+let currentDay = new Date();
 
 //해당 일자가 속한 주 계산
 function getTargetWeek(targetDay){
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 //모달의 슬롯 번호 취합
 function getData() {
+  console.log('모달 정보 취합');
   const slots = document.querySelectorAll(".number-display");
   let tmp = "";
   runKillo = 0;
@@ -146,6 +148,7 @@ function getData() {
 }
 //보드 렌더
 function renderBoardHandler() {
+  
   //선택된 기간 감지
   if(selectedPeriod==="today"){
     $runDataF = runData.filter(run=>run.date===getFormattedDate())
@@ -196,8 +199,11 @@ function renderBoardHandler() {
   const roundAverage = Math.round(averageSpeed * 100) / 100;
   document.getElementById("board-phase").textContent = roundAverage;
 }
-//==========렌더하기==============
+//==========렌더하기===================================================
 function render() {
+  //날짜 정렬
+  runData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  console.log('렌더 진입');
   $runList.innerHTML = "";
   runData.forEach((run) => {
     $newLi = document.createElement("li");
@@ -289,25 +295,6 @@ function setToday(){
   $time.value = currentTime;
 }
 function js(e){console.log(JSON.stringify(e))};
-//수정할 객체 모달에 표시
-function setRedo(id){
-  const redoDataArr = runData.filter(data=>data.id===id);
-  const redoData = redoDataArr[0];
-  js(redoData);
-  $memo.value = redoData.memo;
-  $date.value = redoData.date;
-  $time.value = redoData.time;
-
-  $submitBtn.remove();
-  $newButton = document.createElement('button');
-  $newButton.classList.add('redo-btn');
-  $newButton.textContent="수정";
-  $newButton.addEventListener('click',e=>{
-    submitHandler();
-  })
-  $buttons.insertBefore($newButton,$buttons.firstChild);
-  addListnerToRedoBtn();
-}
 //모달 닫기
 $closeBtn.addEventListener("click", () => {
   modalClose();
@@ -344,13 +331,30 @@ function submitHandler(){
   }
   runData.push(newRun);
   render();
-  console.log(JSON.stringify(runData));
   modalClose();
 }
+//수정할 객체 모달에 표시
+function setRedo(id){
+  console.log('수정할 정보 모달에 표기');
+  const redoDataArr = runData.filter(data=>data.id===id);
+  const redoData = redoDataArr[0];
+  $memo.value = redoData.memo;
+  $date.value = redoData.date;
+  $time.value = redoData.time;
+
+  $submitBtn.style.display = 'none';
+  $redoBtn.style.display = 'block';
+}
+//수정하기버튼에 리스너 추가
+$redoBtn = document.querySelector('.redo-btn');
+$redoBtn.addEventListener('click',e=>{
+    console.log('수정버튼 리스너 추가')
+    redoSubmitHandler();
+});
 //모달 수정 제출
 function redoSubmitHandler(){
+  console.log('모달 수정 제출');
   getData();
-  console.log('runkillo : '+runKillo);
   const averageSpeed = calculateAverageSpeed(
     runKillo,
     runtimeHour,
@@ -383,8 +387,17 @@ function redoSubmitHandler(){
     runData[targetIndex] = newRun; // 기존 위치에 새 객체 추가
   }
   render();
+  console.log('수정정보렌더')
   modalClose();
 }
+//수정아이콘 이벤트 리스너
+$runList.addEventListener('click',e=>{
+  if(!e.target.matches('.lnr-redo'))return;
+  thisId = e.target.closest('.added').dataset.id;
+  currentId=thisId;
+  modalOpen();
+  setRedo(thisId);
+});
 //저장하기
 $submitBtn.addEventListener("click", () => {
   submitHandler();
@@ -392,6 +405,8 @@ $submitBtn.addEventListener("click", () => {
 //추가하기
 $addBtn.addEventListener("click", () => {
   modalOpen();
+  $submitBtn.style.display = 'block';
+  $redoBtn.style.display = 'none';
 });
 //삭제하기
 $runList.addEventListener('click',e=>{
@@ -402,13 +417,6 @@ $runList.addEventListener('click',e=>{
   runData.splice(0,runData.length,...runData.filter(run=>run.id!==dataId));
   render();
 });
-//수정하기버튼에 리스너 추가
-function addListnerToRedoBtn(){
-  document.querySelector('.redo-btn').addEventListener('click',e=>{
-    redoSubmitHandler();
-  })
-
-}
 // 기간 필터링 버튼 리스너
 $periodBtns.addEventListener('click',e=>{
   if(!e.target.matches('.period-btn'))return;
@@ -450,20 +458,11 @@ $lnr.forEach(lnr=>{
   })
 })
 }
-//수정아이콘 이벤트 리스너
-
-$runList.addEventListener('click',e=>{
-  if(!e.target.matches('.lnr-redo'))return;
-  thisId = e.target.closest('.added').dataset.id;
-  currentId=thisId;
-  modalOpen();
-  setRedo(thisId);
-});
 
 //차트 렌더
 function renderChart(){
   if(myChart) myChart.destroy();
-  const thisWeek = getTargetWeek(new Date());
+  const thisWeek = getTargetWeek(currentDay);
   const weekStart = thisWeek.getWeekStart();
   const sun = monthAndDay(weekStart);
   const fullSun = getFormattedDate(weekStart);
@@ -547,7 +546,21 @@ const ctx = document.getElementById('myChart').getContext('2d');
     }
   });
 }
-document.querySelector('.chart-period').addEventListener('click',e=>{
-  if(!e.target.matches('.btn')) return;
-  console.log(e.target);
+function displayCurrentPeriod(){
+  const thisWeek = getTargetWeek(currentDay);
+  const weekStart = monthAndDay(thisWeek.getWeekStart());
+  const weekEnd = monthAndDay(thisWeek.getWeekEnd());
+  document.querySelector('.current-period').textContent = 
+  `${weekStart} - ${weekEnd}`;
+}
+//차트 기간 변경
+document.querySelector('.lnr-chevron-left-circle').addEventListener('click',e=>{
+  currentDay.setDate(currentDay.getDate() - 7);
+  renderChart();
+  displayCurrentPeriod();
+})
+document.querySelector('.lnr-chevron-right-circle').addEventListener('click',e=>{
+  currentDay.setDate(currentDay.getDate() + 7);
+  renderChart();
+  displayCurrentPeriod();
 })
