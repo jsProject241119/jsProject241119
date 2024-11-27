@@ -38,10 +38,7 @@ const $totalIncome = document.getElementById("totalIncome");
 const $closeBtn = document.getElementById("closeBtn")
 const $inputcontainer = document.getElementById("input-container")
 const $addBtn = document.getElementById("add-button")
-const $thisyearBtn = document.getElementById("thisyear")
-const $thismonthBtn = document.getElementById("thismonth")
-const $thisweekBtn = document.getElementById("thisweek")
-const $today =document.getElementById("today");
+
 
 
 let recordTypeInput = "지출";
