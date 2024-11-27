@@ -1,10 +1,19 @@
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
 /* reset */
 a {
   color: inherit;
   text-decoration: none;
 }
 
+
 /* layout */
+body{
+  font-family: 'NanumBarunGothic',sans-serif;
+  background: #D2E0FB;
+  max-width: 80%;
+  margin: auto;
+}
 .container {
   display: flex;
   align-items: center;
@@ -15,7 +24,7 @@ a {
 
 .wrapper {
   font-size: 15px;
-  background: lightgreen;
+  background: #D2E0FB;
   height: 100vh;
  position: relative;
 }
@@ -31,39 +40,70 @@ section.main {
 }
 
 header.main-title {
+  
   padding: 30px 20px;
   font-size: 20px;
   font-weight: 700;
   text-align: center;
-  background: #a3f8ff;
-  color: red;
+  background: #8EACCD;
+  color: white;
   border-bottom: 1px solid #d3d3d3;
 }
 
+#header-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home-box{
+  width: 1000px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+#home-box i{
+  font-size: 25px;
+  color: #555;
+}
+#menu-box i{
+  margin-right: 10px;
+} 
+article.main{
+  height:500px
+}
+div#numbers{
+ 
+  height:400px;
+} 
+
 section.main .number-wrapper {
   padding: 50px 20px;
+  height: 500px;
 }
 
 section.main .number-wrapper h2 {
   font-size: 18px;
   text-align: center;
   text-decoration: underline;
+  margin-top: 20px;
 }
 
 section.main .number-wrapper h2 em {
   font-size: 1em;
   font-weight: 700;
   color: yellowgreen;
+  margin-top: 20px;
 }
 
 #numbers {
-  width: 100%;
+  width: 80%;
   height: 100px;
   border: 1px solid #000;
   border-radius: 10px;
   margin: 30px auto 0;
   padding: 30px 50px;
   overflow: auto;
+  box-sizing: border-box;
 }
 
 #numbers .icon {
@@ -104,8 +144,8 @@ section.main .number-wrapper h2 em {
 
 aside.result {
   position: absolute;
-  top: 70%;
-  right: 17%;
+  top: 30%;
+  right: 1%;
   transform: translateY(-60%);
 }
 
