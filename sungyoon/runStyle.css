@@ -11,8 +11,31 @@ header{
 }
 body{
   z-index: -1;
-  background: #dfdfdf;
-  font-family: 'NanumBarunGothic',sans-serif;
+  background: #D2E0FB;
+  font-family: 'NanumBarunGothic','sans-serif';
+  color: #555;
+}
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#menu-box{
+  width: 60%;
+  height: 50px;
+  padding: 10px;
+  font-size: 30px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.fas{
+  margin: 5px;
+}
+.home{
+  position: absolute;
+  left: 0;
 }
 .head_container{
   width: 60%;
@@ -21,7 +44,7 @@ body{
   border-radius: 8px;
   overflow: hidden;
   background-color: #ffffff;
-  margin: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,11 +66,6 @@ body{
   height: 50px;
   margin-left: 10px;
 }
-.fa-home{
-  
-  color: white;
-  font-size: 30px;
-}
 .head_container .nav .menu{
   margin: 20px;
   font-size: 20px;
@@ -68,7 +86,7 @@ body{
   display: block;
   width: 130px;
   height: 2px;
-  background: #F0C1E1;
+  background: #8EACCD;
   margin-bottom: 10px;
   margin-top: -8px;
 }
@@ -175,7 +193,7 @@ main{
 }
 .main_container{
   width: 60%;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.5);
   display: flex;
   justify-content: center;
 }
@@ -280,6 +298,7 @@ main button{
   width: 250px;
   height: 383px;
   padding: 20px;
+  line-height: 1.2;
 }
 .performance span{
   font-size: 40px;
@@ -290,8 +309,9 @@ main button{
   margin: 10px 0;
 }
 .chart{
+  padding: 20px;
   width: 700px;
-  height: 500px;
+  height: 400px;
   font-weight: 500;
 }
 #chart{
