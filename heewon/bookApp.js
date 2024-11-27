@@ -117,7 +117,7 @@ function validateDates(startDate, endDate) {
 // function searchBooks() {
 //   const searchQuery = $searchInput.value.toLowerCase();
 
-//   const filteredBooks = bookList.filter(book =>
+//   const filteredBooks = bookList.filter(book =>git 
 //     book.title.toLowerCase().includes(searchQuery) ||
 //     book.author.toLowerCase().includes(searchQuery)
 //   );
