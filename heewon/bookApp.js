@@ -59,7 +59,7 @@ function saveBookInfo(event) {
 
   // 입력 값 유효성 검사
   if (!title || !author || !startDate || !endDate || !review) {
-    alert('작성을 모두 입력해 주세요.');
+    alert('빈칸의 텍스트를 입력해주세요.');
     return;
   }
 

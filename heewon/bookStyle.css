@@ -1,10 +1,59 @@
+
+@import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"); 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
+
 /* 기본 스타일 */
 body {
   margin: 0;
   padding: 0;
-  background-color: #fff9db; /* 연노랑 배경 */
+  background-color: #D2E0FB;
   box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'NanumBarunGothic',sans-serif; 
 }
+a{
+  text-decoration: none;
+}
+
+
+/* 우측상단 박스 */
+
+#header-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+
+}
+#home-box{
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+#home-box i{
+  font-size: 25px;
+  color: #555;
+}
+#menu-box i{
+  margin-right: 10px;
+} 
+
+/* 제목 박스 */
+
+h1 {
+  background-color: #B0C6E4;
+  max-width: 800px; /* 최대 너비 설정 */
+  width: 100%; /* 부모 컨테이너에 맞게 확장 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+
 
 /* 전체 컨테이너 */
 .container {
@@ -26,7 +75,7 @@ body {
 
 /* 저장된 책 정보 섹션 */
 .output-section {
-  background-color: #fefefe; 
+  background-color: #fefefe;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
@@ -40,16 +89,17 @@ h2 {
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 20px;
+  font-size: 20px;
+  border: 50px;
 }
 
 h1 {
-  background-color: #ffcb45; 
-  color: #333; 
+  background-color:  #8EACCD;
 }
 
 h2 {
-  background-color: #87ceeb; 
-  color: black; 
+  background-color: #B0C6E4;
+  color:  #555;
 }
 
 /* 폼 스타일 */
@@ -79,7 +129,7 @@ h2 {
 }
 
 #reading-period input[type="date"] {
-  width: auto; 
+  width: auto;
   flex: 1; /* 시작일과 종료일 균일 비율 */
 }
 
@@ -101,8 +151,8 @@ h2 {
 }
 
 #save-btn {
-  background-color: #ffcb45;
-  }
+  background-color: #FEEE91;
+}
 
 button:hover {
   opacity: 0.7;
