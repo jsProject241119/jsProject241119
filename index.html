@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./sungyoon/favicon.png" />
+
+    <title>LifeLogs</title>
+    <style>
+      @import url(./sungyoon/common.css);
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+      @import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css");
+      @import url("https://fonts.googleapis.com/css2?family=Anton&family=Nanum+Pen+Script&display=swap");
+      header {
+        width: 100%;
+        height: 14vh;
+        background: #8eaccd;
+        position: fixed;
+        margin-top: 1%;
+      }
+
+      .logo-container {
+        position: absolute;
+        left: 50px;
+        top: 10px;
+        display: flex;
+        color: white;
+        padding: 10px;
+      }
+
+      .menu {
+        position: absolute;
+        top: 45px;
+        right: 50px;
+        font-size: 25px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        color: #fff;
+        font-family: "NanumBarunGothic", "sans-serif";
+        letter-spacing: 1px;
+      }
+
+      .menu a {
+        margin: 20px;
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+      }
+
+      .menu a:hover {
+        color: #cfe2ff;
+      }
+
+      .team-name {
+        font-size: 40px;
+        margin: 20px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        font-family: "Anton", sans-serif;
+      }
+
+      .catch-phrase {
+        margin: 0 20px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        font-family: "NanumBarunGothic", "sans-serif";
+      }
+
+      .logo-img {
+        width: 100px;
+        height: 100px;
+        background: url("./sungyoon/logoSample.png") center/cover;
+        border-radius: 5px;
+      }
+
+      main {
+        padding-top: 18vh;
+        width: 100%;
+        background: #d2e0fb;
+        min-height: calc(100vh - 18vh - 15vh);
+      }
+
+      footer {
+        width: 100%;
+        background: #f3f3f3;
+      }
+
+      /* 콘텐츠 레이아웃 */
+      .wrap {
+        display: flex;
+      }
+
+      .wrap .left {
+        width: 50%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .wrap .right {
+        width: 50%;
+        height: 70vh;
+        background: url("./images/indexImg.jpg") no-repeat center/cover;
+      }
+
+      .main-text {
+        width: 60%;
+        height: 50vh;
+        line-height: 1.5;
+      }
+
+      /* 애니메이션 */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .main-text h1 {
+        font-size: 70px;
+        font-family: "Anton", sans-serif;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      .main-text h2 {
+        font-size: 30px;
+        font-family: "NanumBarunGothic", "sans-serif";
+        font-weight: 500;
+        color: #555;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      /* 리스트 스타일 */
+      ul {
+        display: flex;
+      }
+
+      li {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden; /* 메뉴 부분 오버플로우 넣었어요 ! */
+      }
+
+      li a {
+        display: block; /* li태그 아래 a태그로 변경돼서 이 부분 추가했어요! */
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: white;
+        position: relative;
+      }
+
+      li:hover {
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+      }
+
+      li .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      li:hover .overlay-text {
+        opacity: 1;
+      }
+
+      #bookLog {
+        background: url("./images/books.jpg") center/cover;
+        cursor: pointer;
+      }
+
+      #accountLog {
+        background: url("./images/accountBook.jpg") center/cover;
+        cursor: pointer;
+      }
+
+      #runLog {
+        background: url("./images/running.jpg") center/cover;
+        cursor: pointer;
+      }
+
+      #game {
+        background: url("./images/game.jpg") center/cover;
+        cursor: pointer;
+      }
+
+      /* 푸터 스타일 */
+
+      .foot-container {
+        padding: 50px;
+        line-height: 1.3;
+      }
+
+      .foot-container h3 {
+        margin-bottom: 10px;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .foot-container p {
+        font-family: "NanumBarunGothic", "sans-serif";
+        letter-spacing: 1px;
+      }
+
+      .foot-container a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s ease;
+      }
+
+      .foot-container a:hover {
+        color: #0052cc;
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+
+    <!DOCTYPE html>
+    <html lang="ko">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="./sungyoon/favicon.png" />
+        <title>LifeLogs</title>
+        <style>
+          /* 스타일은 동일하게 유지 */
+        </style>
+      </head>
+      <body>
+        <header>
+          <div class="logo-container">
+            <div class="logo-img"></div>
+            <div class="text-box">
+              <div class="team-name">LifeLogs</div>
+              <div class="catch-phrase">기록하는 즐거움</div>
+            </div>
+          </div>
+          <div class="menu">
+            <a href="./index.html">Home</a>
+            <a href="./heewon/bookLog.html">BookLog</a>
+            <a href="./yujin/budgetBook.html">BudgetBook</a>
+            <a href="./sungyoon/runLog.html">RunLog</a>
+            <a href="./chanui/Games">Game</a>
+          </div>
+        </header>
+        <main>
+          <div class="wrap">
+            <div class="left">
+              <div class="main-text">
+                <h1>LifeLogs</h1>
+                <h2>team 기록해조</h2>
+                <h2>project 기록하는 즐거움</h2>
+              </div>
+              <ul class="app-list">
+                <li class="link" id="bookLog">
+                  <a href="./heewon/RunLog.html">
+                    <div class="overlay-text">BookLogs</div>
+                  </a>
+                </li>
+                <li class="link" id="accountLog">
+                  <a href="./yujin/Account.html">
+                    <div class="overlay-text">Account</div>
+                  </a>
+                </li>
+                <li class="link" id="runLog">
+                  <a href="./sungyoon/runLog.html">
+                    <div class="overlay-text">RunLogs</div>
+                  </a>
+                </li>
+                <li class="link" id="game">
+                  <a href="./chanui/Game.html">
+                    <div class="overlay-text">Game</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="right"></div>
+          </div>
+        </main>
+        <footer>
+          <div class="foot-container">
+            <div class="contact">
+              <h3>
+                Contact <img src="./images/github-icon.png" alt="github" />
+              </h3>
+              <p>
+                <a href="https://github.com/cafephilia"
+                  >김성윤 : github.com/cafephilia</a
+                >
+              </p>
+              <p>
+                <a href="https://github.com/hee123hee"
+                  >윤희원 : github.com/hee123hee</a
+                >
+              </p>
+              <p>
+                <a href="https://github.com/chchch928"
+                  >장유진 : github.com/chchch928</a
+                >
+              </p>
+              <p>
+                <a href="https://github.com/parkchenui"
+                  >박찬의 : github.com/parkchenui</a
+                >
+              </p>
+            </div>
+          </div>
+        </footer>
+      </body>
+    </html>
+  </head>
+</html>
