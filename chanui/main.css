@@ -11,14 +11,14 @@ a {
 body{
   font-family: 'NanumBarunGothic',sans-serif;
   background: #D2E0FB;
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
 }
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1000px;
+  width: 900px;
   height: 100%;
 }
 
@@ -29,7 +29,7 @@ body{
 }
 
 section.main {
-  width: 1000px;
+  width: 900px;
   background: #f6f6f6;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
@@ -58,7 +58,7 @@ header.main-title {
   align-items: center;
 }
 #home-box{
-  width: 1000px;
+  width: 900px;
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
