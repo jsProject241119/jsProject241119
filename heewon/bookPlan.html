@@ -102,6 +102,24 @@
       <!-- 저장된 책 정보 섹션 -->
       <section class="output-section">
         <h2>Book Log List</h2>
+
+        <!-- 정렬버튼-->
+        <div class="sort-buttons">
+          <button onclick="sortBooksByTitle()">제목순</button>
+          <button onclick="sortBooksByDate()">날짜순</button>
+        </div>
+
+        <!-- 검색하기 -->
+        <section class="search-section">
+          <label for="search-input"> 도서자료 찾기: </label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="`책 제목` 또는 `저자명`"
+          />
+          <button id="search-btn">검색</button>
+        </section>
+
         <ul class="book-list" id="book-list">
           <!-- 저장된 책 정보가 여기에 표시됩니다 -->
         </ul>
