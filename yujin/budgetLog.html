@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가계부</title>
+    <link rel="stylesheet" href="financial-record.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+      rel="stylesheet"
+    />
+    <script src="financial-record.js" defer></script>
+    <link rel="icon" href="./favicon.png" />
+  </head>
+  <body>
+    <header>
+      <div id="header-box">
+        <div id="home-box">
+          <a href="../index.html"><i class="fas fa-home"></i></a>
+          <div id="menu-box">
+            <a href="../heewon/bookLog.html"><i class="fas fa-book"></i></a>
+            <a href="financial-record.html"
+              ><i class="fas fa-search-dollar"></i
+            ></a>
+            <a href="../sungyoon/runLog.html"><i class="fas fa-running"></i></a>
+            <a href="../chanui/games.html"><i class="fas fa-gamepad"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="top">
+      <div id="top-container">
+        <h1>Budget Book <i class="fas fa-search-dollar"></i></h1>
+      </div>
+    </section>
+    <section id="record-total-container">
+      <div id="container-box">
+        <div class="total-card" id="total-record">
+          <h3>전체총액</h3>
+          <span id="totalAmount">0</span>
+        </div>
+        <div id="each-total-record">
+          <div id="expense-total-record">
+            지출 총액: - <span id="totalExpense">0</span>
+          </div>
+          <div id="income-total-record">
+            수입 총액: +<span id="totalIncome">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="full-record-list-text">
+      <div id="full-record-list-text-box"><span>전체내역</span></div>
+    </div>
+    <section id="full-record-list">
+      <div id="list-title">
+        <span>날짜</span>
+        <span>종류</span>
+        <span>금액</span>
+        <span>내용</span>
+        <span>삭제</span>
+      </div>
+      <ul id="record-list"></ul>
+    </section>
+    <section id="add-container">
+      <button id="add-button">
+        <i class="fas fa-plus-circle"></i><br />새 거래내역 추가
+      </button>
+    </section>
+    <section id="full-input-container">
+      <div id="input-container">
+        <div id="header-button">
+          <button id="expenseBtn">지출</button>
+          <button id="incomeBtn">수입</button>
+        </div>
+        <div id="input-box">
+          <div class="calender-box">
+            <label for="calender-box">날짜 : </label>
+            <input type="date" id="dateInput" />
+          </div>
+          <div class="price-box">
+            <label for="price">금액 : </label>
+            <input id="priceInput" placeholder="금액을 입력하세요" />
+          </div>
+          <div class="content-box">
+            <label for="content">내용 : </label>
+            <input id="contentInput" placeholder="내용을 입력하세요" />
+          </div>
+        </div>
+        <button id="submitBtn" type="submit">저장하기</button>
+        <button id="closeBtn">닫기</button>
+      </div>
+    </section>
+  </body>
+</html>
