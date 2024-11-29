@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const fetchData = async () => {
+        const url =
+          "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
+        const queryParams = new URLSearchParams({
+          serviceKey: "yjh3cmb465ofZYMOXk0108zs2SSCJSRp5H57RuWh0t7HLxF8UmLeBkATet3G9ogT7EzFtKJ4DvzGKFVw98TaGw==", // Service Key
+          pageNo: "1",
+          numOfRows: "1000",
+          dataType: "JSON",
+          base_date: "20241123",
+          base_time: "1054",
+          nx: "60",
+          ny: "127",
+        }).toString();
+
+        try {
+          const response = await fetch(`${url}?${queryParams}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          console.log("응답 데이터:", data);
+        } catch (error) {
+          console.error("에러 발생:", error);
+        }
+      };
+
+      fetchData();
+    </script>
+  </body>
+</html>

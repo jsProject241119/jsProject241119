@@ -1,0 +1,184 @@
+
+@import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"); 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
+
+/* 기본 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #D2E0FB;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'NanumBarunGothic',sans-serif; 
+}
+a{
+  text-decoration: none;
+}
+
+
+/* 우측상단 박스 */
+
+#header-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+
+}
+#home-box{
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+#home-box i{
+  font-size: 25px;
+  color: #555;
+}
+#menu-box i{
+  margin-right: 10px;
+} 
+
+/* 제목 박스 */
+
+h1 {
+  background-color:#8EACCD;
+  max-width: 800px; /* 최대 너비 설정 */
+  width: 100%; /* 부모 컨테이너에 맞게 확장 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  color: white;
+  box-sizing: border-box;
+
+}
+
+
+
+/* 전체 컨테이너 */
+.container {
+  max-width: 800px; /* 중앙 콘텐츠 최대 너비 */
+  margin: 20px auto; /*상하, 좌우 여백*/
+  padding: 0 20px; /* 양쪽 추가 패딩 */
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  gap: 20px;
+}
+
+.input-section {
+  background-color: #fefefe; /* 흰색 배경 */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 저장된 책 정보 섹션 */
+.output-section {
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+h1,
+h2 {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  border: 50px;
+}
+
+
+h2 {
+  background-color: #B0C6E4;
+  color:  #555;
+}
+
+/* 폼 스타일 */
+.book-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.book-form input,
+.book-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* 독서 기간 스타일 */
+#reading-period {
+  display: flex; /* 수평 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 20px; /* 시작일과 종료일 간 간격 */
+}
+
+#reading-period input[type="date"] {
+  width: auto;
+  flex: 1; /* 시작일과 종료일 균일 비율 */
+}
+
+.book-form .button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-form button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cancel-btn {
+  background-color: lightgray;
+}
+
+#save-btn {
+  background-color: #FEEE91;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+/* 저장된 책 정보 */
+.output-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.output-section li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.output-section li h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.output-section li p {
+  margin: 5px 0;
+  color: #555;
+}
