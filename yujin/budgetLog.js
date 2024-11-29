@@ -74,7 +74,7 @@ function renderRecords() {
             <div>${record.recordTypeInput}</div>
             <div id ="userPrice"> ${displayPrice} </div>
             <div> ${record.content} </div>
-            <div class="remove"><span class="lnr lnr-cross-circle"></span></div>
+            <div class="remove clickable"><span class="lnr lnr-cross-circle"></span></div>
         
     `;
     $recordsUl.append($li);
