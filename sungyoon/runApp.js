@@ -219,7 +219,7 @@ function renderBoardHandler() {
 //==========렌더하기===================================================
 function render() {
   //날짜 정렬
-  runData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  runData.sort((a, b) => new Date(b.date) - new Date(a.date));
   console.log('렌더 진입');
   $runList.innerHTML = "";
   runData.forEach((run) => {
