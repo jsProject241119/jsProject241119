@@ -1,0 +1,332 @@
+
+
+@import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"); 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
+a{
+    text-decoration: none;
+}
+body{
+  
+background: #D2E0FB;
+  font-family: 'NanumBarunGothic',sans-serif;
+    
+  color: #555;
+  
+
+}
+
+
+#header-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#home-box{
+    width: 900px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+#home-box i{
+    font-size: 25px;
+    color: #555;
+}
+#menu-box i{
+    margin-right: 10px;
+}
+
+#top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#top-container{
+    width: 900px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:#8EACCD;
+    color: white;
+    text-align: center;
+    margin-top: 10px ;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 10px; 
+    padding: 20px 0;
+    box-sizing: border-box;
+
+}
+#top-container i {
+margin-left: 10px;
+}
+
+
+#record-total-container{
+display: flex;
+justify-content: center;
+align-items: center;
+    
+}
+#record-total-container .total-card{
+    
+    text-align: center;
+    background: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 카드 섀도우 */
+    padding: 20px;
+    margin: 0 10px;
+}
+#record-total-container .total-card h3 {
+    font-size: 20px; 
+    color: #555; 
+    margin-bottom: 10px;
+}
+
+#record-total-container .total-card span {
+    display: block;
+    font-size: 30px; 
+    font-weight: bold;
+    color: #555; 
+}
+
+#record-total-container #expense-total-record span {
+    color: #da1414be; 
+}
+
+#record-total-container #income-total-record span {
+    color: #0052e986;
+}
+#container-box{
+    
+    width: 700px;
+    height: 200px;
+    background: #B0C6E4;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    padding: 30px;
+    color:#2d2d2d;
+    font-weight: 550;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+    
+
+}
+
+
+#total-record{
+    text-align: center;
+    font-size: 25px;
+    
+    
+}
+#each-total-record{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#record-total-container #expense-total-record{
+    margin-right: 20px;
+    color: #da1414be;
+    font-weight:600;
+}
+#record-total-container #income-total-record{
+    color: #0052e986;
+    font-weight: 600;
+}
+#full-record-list-text{
+    display: flex;
+    justify-content: center;
+}
+#full-record-list-text-box {
+    width: 900px;
+    font-size: 30px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content:space-between ;
+   
+}
+
+
+
+#full-record-list {
+    width: 900px;                
+    
+    margin: 0 auto;             
+    background-color: #f9f9f9;  
+    border-radius: 10px;      
+    box-shadow: 4px 4px 4px 6px rgba(0, 0, 0, 0.1); 
+          
+}
+
+#list-title {
+    display: flex;              
+    justify-content: space-around; 
+    font-size: 25px;
+    font-weight: 550;          
+    background-color: #8EACCD;  
+    color: white;               
+    padding: 10px;            
+    text-align: center; 
+          
+}
+
+#record-list {
+    list-style: none;           
+    width: 100%;
+    font-size: 18px;
+}
+
+.record-list-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;              
+    border-bottom: 1px solid #ddd; 
+    height: 40px;
+}
+
+#record-list li:nth-child(even) {
+    background-color: #f3f3f3;  
+}
+
+#record-list li:last-child {
+    border-bottom: none; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);        
+}
+
+#record-list li div {
+    flex: 1;                    
+    text-align: center;         
+}
+
+#add-container{
+    margin-top: 30px;
+    text-align: center;
+    
+}
+#add-button{
+    width: 280px;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: #555;
+    
+    font-weight: 600px;
+}
+#add-button i{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+#full-input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#input-container{
+    width: 700px;
+    opacity: 0;
+    margin-top:10px;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #B0C6E4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3 ease;
+}
+input::placeholder {
+    color: gray; 
+    font-style: italic; 
+    font-size: 14px; 
+    opacity: 0.7; 
+}
+#add-button.cover{
+    opacity: 0;
+}
+#input-container.show{
+    opacity: 1;
+    
+}
+#input-box{
+    font-size: 15px;
+    margin: 18px;
+    font-weight: 550;
+    display: flex;
+    flex-direction: column;
+    
+}
+#input-box .calender-box{
+    margin-bottom: 10px;
+}
+#input-box input{
+    font-size: 15px;
+    width:250px;
+    border: none;
+    height: 30px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
+}
+.content-box{
+    margin-top:10px;
+    
+}
+.clickable{
+    cursor: pointer;
+
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+button{
+    background-color: white;
+    border: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+button:hover{
+    transform: scale(1.05);
+    transition: all 0.4s ease;
+}
+
+#header-button button{
+    font-size: 18px;
+    width: 135px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+}
+
+#header-button button.expense-active{
+    background-color: #da1414be;
+    color:white
+}
+#header-button button.income-active{
+    background-color: #0052e986;
+    color:white
+}
+#submitBtn{
+    width: 120px;
+    height: 35px;
+    font-size: 15px;
+    border-radius: 10px;
+
+}
+
+#full-input-container #closeBtn{
+    background: rgba(183, 175, 175, 0.656);
+    margin-top: 10px;
+    width: 120px;
+    height:35px;
+    font-size: 15px;
+    border-radius: 10px;
+}
